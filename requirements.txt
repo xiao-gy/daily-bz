@@ -2,4 +2,3 @@ requests
 retrying
 lxml
 quote
-urllib
