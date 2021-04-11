@@ -21,7 +21,6 @@ jobs:
         python-version: '3.x'
     - name: Install dependencies
       run: |
-        apt install git -y
         python -m pip install --upgrade pip
         
     - name: Getting bz
