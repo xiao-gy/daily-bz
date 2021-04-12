@@ -11,6 +11,11 @@ headers= {
 }
 url_base = 'https://zhb.eehentai.com'
 
+try:
+    os.mkdir(os.path.join(os.getcwd(),'bz'))
+except Exception:
+    pass
+
 url_list = get_bzlist(headers,url_base)
 for i in url_list:
     id = i[3:-1]
