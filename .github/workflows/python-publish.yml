@@ -33,4 +33,4 @@ jobs:
     - name: Upload bz
       run: |
         curl -sL https://git.io/cowtransfer | sh 
-        ./cowtransfer-uploader --hash bz.zip
+        ./cowtransfer-uploader --hash ./bz.zip
