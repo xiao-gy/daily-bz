@@ -13,3 +13,6 @@ def zip_file(src_dir):
             z.write(os.path.join(dirpath, filename),fpath+filename)
             print ('==压缩成功==')
     z.close()
+
+if __name__ == "__main__":
+    zip_file('bz')
