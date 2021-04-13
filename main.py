@@ -4,6 +4,7 @@ from get_list import get_bzlist
 from get_detail import get_bzdetail
 from get_imglink import get_imglink
 from download_img import download_img
+from download_aria2 import download_aria2
 from zip import zip_file
 
 headers= {
@@ -22,6 +23,6 @@ for i in url_list:
     print(id)
     name = get_bzdetail(headers,url_base,i)
     link = get_imglink(headers,url_base+i)
-    download_img(headers,link,id)
+    download_aria2(headers,link,id)
 
 zip_file('bz')
