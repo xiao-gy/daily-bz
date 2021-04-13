@@ -10,7 +10,8 @@ def download_aria2(headers,url,id):
     for i in url:
         f.write(i+'\n')
     f.close()
-    os.system('aria2c --conf-path=./config/aria.conf -d '+os.path.join(os.getcwd(),'bz',id)+' -i '+os.path.join(os.getcwd(),'bz',id,'file.txt'))
+    #print('aria2c --conf-path=./config/aria2.conf -d '+os.path.join(os.getcwd(),'bz',id)+' -i '+os.path.join(os.getcwd(),'bz',id,'file.txt'))
+    os.system('aria2c --conf-path=./config/aria2.conf -d '+os.path.join(os.getcwd(),'bz',id)+' -i '+os.path.join(os.getcwd(),'bz',id,'file.txt'))
 
 if __name__ == "__main__":
     headers= {
