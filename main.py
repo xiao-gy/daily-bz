@@ -23,6 +23,6 @@ for i in url_list:
     print(id)
     name = get_bzdetail(headers,url_base,i)
     link = get_imglink(headers,url_base+i)
-    download_img(headers,link,id)
+    download_aria2(headers,link,id)
 
 zip_file('bz')
