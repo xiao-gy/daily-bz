@@ -4,7 +4,7 @@
 - 爬取 Nyahentai 并获取首页上的所有本子的链接
 - 内置 requests 和 aria2 两种可选的下载方式
 - 内置更加简单易用的 aria2 配置文件
-- 新增check功能，可以检查本子下载的完整性
+- 新增 check 功能，可以检查本子下载的完整性
 
 ## 使用入门
 
@@ -14,7 +14,7 @@
 
 ### Linux
 
-这里仅列举Ubuntu的使用方法，其他系统同理
+这里仅列举 Ubuntu 的使用方法，其他系统同理
 
 ```bash
 git clone https://github.com/xiao-gy/daily_bz.git
@@ -25,4 +25,4 @@ python3 main.py
 
 ### mac
 
-使用方法与windows同理，自行尝试即可
+使用方法与 windows 同理，自行尝试即可
