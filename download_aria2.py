@@ -2,7 +2,7 @@ import os
 
 def download_aria2(headers,url,id):
     try:
-        print(os.path.join(os.getcwd(),'bz',id))
+        #print(os.path.join(os.getcwd(),'bz',id))
         os.mkdir(os.path.join(os.getcwd(),'bz',id))
     except Exception:
         pass
