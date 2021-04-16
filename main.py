@@ -17,6 +17,11 @@ try:
 except Exception:
     pass
 
+try:
+    os.remove(os.path.join(os.getcwd(),'config','aria2.log'))
+except Exception:
+    pass
+
 url_list = get_bzlist(headers,url_base)
 for i in url_list:
     id = i[3:-1]
