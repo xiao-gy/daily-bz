@@ -29,5 +29,6 @@ for i in url_list:
     name = get_bzdetail(headers,url_base,i)
     link = get_imglink(headers,url_base+i)
     download_aria2(headers,link,id)
+    get_bzdetail(headers,url_base,i)
 
 zip_file('bz')
