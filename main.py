@@ -26,7 +26,6 @@ url_list = get_bzlist(headers,url_base)
 for i in url_list:
     id = i[3:-1]
     print(id)
-    name = get_bzdetail(headers,url_base,i)
     link = get_imglink(headers,url_base+i)
     download_aria2(headers,link,id)
     get_bzdetail(headers,url_base,i)
