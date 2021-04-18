@@ -1,9 +1,13 @@
 /page
-/bz
+.vscode/
 /__pycache__
-nyahentai.py
+
+/bz
 bz.zip
+
 aria2c.exe
 /config/aria2.session
 /config/aria2.log
-.vscode/
+
+cowtransfer-uploader
+cowtransfer-uploader.exe
