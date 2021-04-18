@@ -12,22 +12,26 @@ headers= {
 }
 url_base = 'https://zhb.eehentai.com'
 
-try:
-    os.mkdir(os.path.join(os.getcwd(),'bz'))
-except Exception:
-    pass
+def main(url_base):
+    try:
+        os.mkdir(os.path.join(os.getcwd(),'bz'))
+    except Exception:
+        pass
 
-try:
-    os.remove(os.path.join(os.getcwd(),'config','aria2.log'))
-except Exception:
-    pass
+    try:
+        os.remove(os.path.join(os.getcwd(),'config','aria2.log'))
+    except Exception:
+        pass
 
-url_list = get_bzlist(headers,url_base)
-for i in url_list:
-    id = i[3:-1]
-    print(id)
-    link = get_imglink(headers,url_base+i)
-    download_aria2(headers,link,id)
-    get_bzdetail(headers,url_base,i)
+    url_list = get_bzlist(headers,url_base)
+    for i in url_list:
+        id = i[3:-1]
+        print(id)
+        link = get_imglink(headers,url_base+i)
+        download_aria2(headers,link,id)
+        get_bzdetail(headers,url_base,i)
 
-zip_file('bz')
+    zip_file('bz')
+
+if __name__ == "__main__":
+    main(url_base)
