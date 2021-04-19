@@ -17,7 +17,7 @@ headers= {
 
 def home():
     global url_base
-    global header
+    global headers
     opt=int(input('''=================欢迎使用Daily_bz=================
 1) 爬取本子
 2) 校验本子
