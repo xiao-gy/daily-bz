@@ -24,6 +24,7 @@ def home():
 3) 筛选本子
 4) 上传本子
 5) 下载指定本子
+6) 信息完善
 0) 更新Nyahentai网址
 你的选择是: '''))
     if opt == 1:
@@ -39,6 +40,19 @@ def home():
         link = get_imglink(headers,url_base+'/g/'+id+'/')
         download_aria2(headers,link,id)
         get_bzdetail(headers,url_base,'/g/'+id+'/')
+    elif opt == 6:
+        opt = int(input('1) 更新json文件\n2) 更新file.txt\n你的选择是: '))
+        if opt == 1:
+            for i in list(os.walk(os.path.join(os.getcwd(),'bz')))[0][1]:
+                url_add = '/g/'+i+'/'
+                get_bzdetail(headers,url_base,url_add)
+        elif opt == 2:
+            for i in list(os.walk(os.path.join(os.getcwd(),'bz')))[0][1]:
+                link = get_imglink(headers,url_base+'/g/'+i+'/')
+                f = open(os.path.join(os.getcwd(),'bz',i,'file.txt'), mode='w+')
+                for i in link:
+                    f.write(i+'\n')
+                f.close()
     elif opt == 0:
         url_base = input('新网址: ')
     else:
