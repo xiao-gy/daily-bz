@@ -19,9 +19,8 @@ def get_bzdetail(headers,url_base,url_add):
         "tags": tags,
         "page": page
     }
-    f = open(os.path.join(os.getcwd(),'bz',url_add[3:-1],'info.json'), mode='w+')
+    f = open(os.path.join(os.getcwd(),'bz',url_add[3:-1],'info.json'), mode='w+',encoding="utf-8")
     f.write(json.dumps(data,ensure_ascii=False))
-    json.dumps(data,ensure_ascii=False)
 
 if __name__ == "__main__":
     headers= {
