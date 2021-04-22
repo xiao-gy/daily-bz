@@ -18,7 +18,7 @@ headers= {
 def home():
     global url_base
     global headers
-    opt=int(input('''=================欢迎使用Daily_bz=================
+    opt=input('''=================欢迎使用Daily_bz=================
 1) 爬取本子
 2) 校验本子
 3) 筛选本子
@@ -26,35 +26,36 @@ def home():
 5) 下载指定本子
 6) 信息完善
 0) 更新Nyahentai网址
-你的选择是: '''))
-    if opt == 1:
+你的选择是: ''')
+    if opt == '1':
         main(url_base)
-    elif opt == 2:
+    elif opt == '2':
         check()
-    elif opt == 3:
+    elif opt == '3':
         pass
-    elif opt == 4:
+    elif opt == '4':
         os.system('./cowtransfer-uploader --hash ./bz.zip')
-    elif opt == 5:
+    elif opt == '5':
         id = input('输入你要下载的本子id: ')
         link = get_imglink(headers,url_base+'/g/'+id+'/')
         download_aria2(headers,link,id)
         get_bzdetail(headers,url_base,'/g/'+id+'/')
-    elif opt == 6:
-        opt = int(input('1) 更新json文件\n2) 更新file.txt\n你的选择是: '))
-        if opt == 1:
+    elif opt == '6':
+        opt = input('1) 更新json文件\n2) 更新file.txt\n你的选择是: ')
+        if opt == '1':
             for i in list(os.walk(os.path.join(os.getcwd(),'bz')))[0][1]:
                 url_add = '/g/'+i+'/'
                 get_bzdetail(headers,url_base,url_add)
-        elif opt == 2:
+        elif opt == '2':
             for i in list(os.walk(os.path.join(os.getcwd(),'bz')))[0][1]:
                 link = get_imglink(headers,url_base+'/g/'+i+'/')
                 f = open(os.path.join(os.getcwd(),'bz',i,'file.txt'), mode='w+')
                 for i in link:
                     f.write(i+'\n')
                 f.close()
-    elif opt == 0:
+    elif opt == '0':
         url_base = input('新网址: ')
+        home()
     else:
         print('请重新输入')
 
