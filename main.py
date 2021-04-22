@@ -31,7 +31,6 @@ def main(url_base):
         download_aria2(headers,link,id)
         get_bzdetail(headers,url_base,i)
 
-    zip_file('bz')
-
 if __name__ == "__main__":
     main(url_base)
+    zip_file('bz')
