@@ -1,4 +1,6 @@
 import os
+import json
+import ast
 
 from main import main
 from check import check
@@ -8,16 +10,20 @@ from get_imglink import get_imglink
 from download_img import download_img
 from download_aria2 import download_aria2
 from zip import zip_file
+from screen import screen_tag
 
 #各项变量设置
 url_base = 'https://zhb.eehentai.com'
 headers= {
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36'
     }
+t_tag =[]
 
 def home():
     global url_base
     global headers
+    global json
+    global t_tag
     opt=input('''=================欢迎使用Daily_bz=================
 1) 爬取本子
 2) 校验本子
@@ -25,14 +31,26 @@ def home():
 4) 上传本子
 5) 下载指定本子
 6) 信息完善
-0) 更新Nyahentai网址
+0) 设置信息
 你的选择是: ''')
     if opt == '1':
         main(url_base)
     elif opt == '2':
         check()
     elif opt == '3':
-        pass
+        opt = input('1) 筛选指定tag的本子\n2) 筛选除了指定tag之外的本子\n你的选择是: ')
+        if opt == '1':
+            bool = True
+        elif opt == '2':
+            bool = False
+        for i in list(os.walk(os.path.join(os.getcwd(),'bz')))[0][1]:
+            f = open(os.path.join(os.getcwd(),'bz',i,'info.json'),mode='r',encoding='utf8')
+            json = json.loads(f.read())
+            #print(json,screen_tag(json['tags'],t_tag,bool))
+            #return
+            f.close()
+            if screen_tag(json['tags'],t_tag,bool) == False:
+                del_file(os.path.join(os.getcwd(),'bz',i))
     elif opt == '4':
         os.system('./cowtransfer-uploader --hash ./bz.zip')
     elif opt == '5':
@@ -54,9 +72,14 @@ def home():
                     f.write(i+'\n')
                 f.close()
     elif opt == '0':
-        url_base = input('新网址: ')
+        opt = input('1) 更新 Nyahentai 网址\n2) 输入 t_tag\n你的选择是: ')
+        if opt == '1':
+            url_base = input('新网址: ')
+        elif opt == '2':
+            t_tag = input('输入t_tag列表(请直接使用,分割): ').strip(',').split(',')
         home()
     else:
         print('请重新输入')
+        home()
 
 home()
