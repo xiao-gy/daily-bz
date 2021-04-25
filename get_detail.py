@@ -10,9 +10,11 @@ import os
 def get_bzdetail(headers,url_base,url_add):
     r = requests.get(url_base+url_add,headers=headers)
     html = etree.HTML(r.text)
-    name = html.xpath('//*[@id="info"]/h1/text()')
+    name = html.xpath('//*[@id="info"]/h1/text()')[0]
     tags = html.xpath('//span[@class="tags"]/a/text()')
     page = int(str(html.xpath('//*[@id="info"]/div[1]/text()'))[4:-4])
+    for i in range(len(tags)):
+        tags[i] = tags[i][:-1]
     data = {
         "id": url_add[3:-1],
         "name": name,
