@@ -1,6 +1,9 @@
 /page
 .vscode/
 /__pycache__
+/build
+/dist
+manager.spec
 
 /bz
 bz.zip
