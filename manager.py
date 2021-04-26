@@ -82,4 +82,9 @@ def home():
         print('请重新输入')
         home()
 
+try:
+    os.mkdir(os.path.join(os.getcwd(),'bz'))
+except Exception:
+    pass
+
 home()
