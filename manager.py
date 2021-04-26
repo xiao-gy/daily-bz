@@ -1,6 +1,6 @@
 import os
 import json
-import ast
+import shutil
 
 from main import main
 from check import check
@@ -22,7 +22,6 @@ t_tag =[]
 def home():
     global url_base
     global headers
-    global json
     global t_tag
     opt=input('''=================欢迎使用Daily_bz=================
 1) 爬取本子
@@ -38,20 +37,21 @@ def home():
     elif opt == '2':
         check()
     elif opt == '3':
-        opt = input('1) 筛选指定tag的本子\n2) 筛选除了指定tag之外的本子\n你的选择是: ')
+        opt = input('1) 筛选包含指定tag的本子\n2) 筛选除了指定tag之外的本子\n你的选择是: ')
         if opt == '1':
             bool = True
         elif opt == '2':
             bool = False
         for i in list(os.walk(os.path.join(os.getcwd(),'bz')))[0][1]:
             f = open(os.path.join(os.getcwd(),'bz',i,'info.json'),mode='r',encoding='utf8')
-            json = json.loads(f.read())
+            info = json.loads(f.read())
             #print(json,screen_tag(json['tags'],t_tag,bool))
             #return
             f.close()
-            if screen_tag(json['tags'],t_tag,bool) == False:
-                del_file(os.path.join(os.getcwd(),'bz',i))
+            if screen_tag(info['tags'],t_tag,bool) == False:
+                shutil.rmtree(os.path.join(os.getcwd(),'bz',i))
     elif opt == '4':
+        zip_file('bz')
         os.system('./cowtransfer-uploader --hash ./bz.zip')
     elif opt == '5':
         id = input('输入你要下载的本子id: ')
