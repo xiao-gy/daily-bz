@@ -11,6 +11,7 @@ from download_img import download_img
 from download_aria2 import download_aria2
 from zip import zip_file
 from screen import screen_tag
+from search import search
 
 #各项变量设置
 url_base = 'https://zhb.eehentai.com'
@@ -29,7 +30,8 @@ def home():
 3) 筛选本子
 4) 上传本子
 5) 下载指定本子
-6) 信息完善
+6) 搜索本子
+7) 信息完善
 0) 设置信息
 你的选择是: ''')
     if opt == '1':
@@ -59,6 +61,14 @@ def home():
         download_aria2(headers,link,id)
         get_bzdetail(headers,url_base,'/g/'+id+'/')
     elif opt == '6':
+        url_list = search(headers,url_base,input('请输入关键词: '))
+        for i in url_list:
+            id = i[3:-1]
+            print(id)
+            link = get_imglink(headers,url_base+i)
+            download_aria2(headers,link,id)
+            get_bzdetail(headers,url_base,i)
+    elif opt == '7':
         opt = input('1) 更新json文件\n2) 更新file.txt\n你的选择是: ')
         if opt == '1':
             for i in list(os.walk(os.path.join(os.getcwd(),'bz')))[0][1]:
