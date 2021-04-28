@@ -6,6 +6,7 @@ from get_imglink import get_imglink
 from download_img import download_img
 from download_aria2 import download_aria2
 from zip import zip_file
+from download_form import download_form
 
 headers= {
     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36'
@@ -30,6 +31,7 @@ def main(url_base):
         link = get_imglink(headers,url_base+i)
         download_aria2(headers,link,id)
         get_bzdetail(headers,url_base,i)
+        download_form(id)
 
 if __name__ == "__main__":
     main(url_base)

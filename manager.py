@@ -12,6 +12,7 @@ from download_aria2 import download_aria2
 from zip import zip_file
 from screen import screen_tag
 from search import search
+from download_form import download_form
 
 #各项变量设置
 url_base = 'https://zhb.eehentai.com'
@@ -60,6 +61,7 @@ def home():
         link = get_imglink(headers,url_base+'/g/'+id+'/')
         download_aria2(headers,link,id)
         get_bzdetail(headers,url_base,'/g/'+id+'/')
+        download_form(id)
     elif opt == '6':
         url_list = search(headers,url_base,input('请输入关键词: '))
         for i in url_list:
@@ -84,6 +86,7 @@ def home():
         elif opt == '3':
             id = input('输入要补全的本子id: ')
             os.system('aria2c --conf-path=./config/aria2.conf -d '+os.path.join(os.getcwd(),'bz',id)+' -i '+os.path.join(os.getcwd(),'bz',id,'file.txt'))
+            download_form(id)
     elif opt == '0':
         opt = input('1) 更新 Nyahentai 网址\n2) 输入 t_tag\n你的选择是: ')
         if opt == '1':
