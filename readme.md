@@ -18,7 +18,7 @@
 
 这里仅列举 Ubuntu 的使用方法，其他系统同理
 
-```bash
+``` bash
 git clone https://github.com/xiao-gy/daily_bz.git
 sudo apt install aria2 -y
 python3-pip install -r requirements.txt
