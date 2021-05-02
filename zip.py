@@ -11,8 +11,8 @@ def zip_file(src_dir):
         fpath = fpath and fpath + os.sep or ''
         for filename in filenames:
             z.write(os.path.join(dirpath, filename),fpath+filename)
-            print ('==压缩成功==')
     z.close()
+    print ('==压缩成功==')
 
 if __name__ == "__main__":
     zip_file('bz')
