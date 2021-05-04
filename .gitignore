@@ -11,6 +11,7 @@ bz.zip
 aria2c.exe
 /config/aria2.session
 /config/aria2.log
+/config/config.json
 
 cowtransfer-uploader
 cowtransfer-uploader.exe

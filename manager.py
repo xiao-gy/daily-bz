@@ -14,18 +14,13 @@ from screen import screen_tag
 from search import search
 from download_form import download_form
 from collection import collection
-
-#各项变量设置
-url_base = 'https://zhb.eehentai.com'
-headers= {
-        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36'
-    }
-t_tag =[]
+from setting import *
 
 def home():
-    global url_base
-    global headers
-    global t_tag
+    global info
+    #各项变量设置
+    version,headers,url_base,t_tag = info()
+
     opt=input('''=================欢迎使用Daily_bz=================
 1) 爬取本子
 2) 校验本子
@@ -90,14 +85,10 @@ def home():
             os.system('aria2c --conf-path=./config/aria2.conf -d '+os.path.join(os.getcwd(),'bz',id)+' -i '+os.path.join(os.getcwd(),'bz',id,'file.txt'))
             download_form(id)
     elif opt == '8':
-        opt = input('1) 查看收藏\n2) 2) 添加收藏\n3) 取消收藏\n4) 修改备注\n你的选择是: ')
+        opt = input('1) 查看收藏\n2) 添加收藏\n3) 取消收藏\n4) 修改备注\n你的选择是: ')
         collection(opt)
     elif opt == '0':
-        opt = input('1) 更新 Nyahentai 网址\n2) 输入 t_tag\n你的选择是: ')
-        if opt == '1':
-            url_base = input('新网址: ')
-        elif opt == '2':
-            t_tag = input('输入t_tag列表(请直接使用,分割): ').strip(',').split(',')
+        setting()
         home()
     else:
         print('请重新输入')
