@@ -1,4 +1,5 @@
 import os
+import json
 
 #输入程序基本信息
 version = 'v0.3'
@@ -20,12 +21,12 @@ def read():
 def save():
     f = open(os.path.join(os.getcwd(),'config','config.json'),mode='w+',encoding='utf8')
     data = {
-        'version': version,
-        'url_base': url_base,
-        'headers': headers,
-        't_tag': t_tag
+        "version": version,
+        "url_base": url_base,
+        "headers": headers,
+        "t_tag": t_tag
     }
-    f.write(str(data))
+    f.write(json.dumps(data,ensure_ascii=False))
     f.close()
 
 def info():
