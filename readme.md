@@ -1,6 +1,7 @@
 # 一个拿来练手的Nyahentai每日本子下载
 
 ## 功能和特性
+- 支持 `Github Actions` 每日运行，并自动上传 `cowtransfer` 以取回
 - 爬取 Nyahentai 并获取首页上的所有本子的链接
 - 内置 requests 和 aria2 两种可选的下载方式
 - 内置更加简单易用的 aria2 配置文件
@@ -9,6 +10,16 @@
 - 新增 screen 功能，可以筛选指定的 tag
 
 ## 使用入门
+
+### Github Actions
+
+fork本项目后对 `readme.md` 进行修改后，即可在每日的指定时间自动运行,可以从 `Upload bz` 中获取 `cowtransfer` 的下载链接
+
+或者可以手动push来运行本项目
+
+注：
+- 本项目运行时间不稳定，从1~5小时不等，请耐心等待。
+- `Github Actions` 下载的文件不一定完整，可在本地运行本项目进行补充
 
 ### Windows
 
