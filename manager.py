@@ -13,7 +13,7 @@ from zip import zip_file
 from screen import screen_tag
 from search import search
 from download_form import download_form
-from collection import collection
+from collection import *
 from setting import *
 
 def home():
@@ -86,7 +86,17 @@ def home():
             download_form(id)
     elif opt == '8':
         opt = input('1) 查看收藏\n2) 添加收藏\n3) 取消收藏\n4) 修改备注\n你的选择是: ')
-        collection(opt)
+        if opt == '1':
+            put_collection()
+        elif opt == '2':
+            id = input('输入id: ')
+            name,tags,page = get_bzdetail(headers,url_base,'/g/'+id+'/')
+            add_collection(id,name,input('输入注释: '))
+        elif opt == '3':
+            del_collection(input('输入id: '))
+        elif opt == '4':
+            mark_collection(input('输入id: '))
+        home()
     elif opt == '0':
         setting()
         home()
