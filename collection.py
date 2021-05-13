@@ -51,7 +51,7 @@ def mark_collection(id):
         mark = input('输入注释: ')
         if not mark:
             mark = ' '
-        mark_collection[like_list.index(id)] = mark
+        like_mark[like_list.index(id)] = mark
     else:
         print('id未存在')
     save_collection()
