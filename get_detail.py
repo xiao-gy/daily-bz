@@ -19,7 +19,8 @@ def get_bzdetail(headers,url_base,url_add):
         "id": url_add[3:-1],
         "name": name,
         "tags": tags,
-        "page": page
+        "page": page,
+        "state": "unchecked"
     }
     f = open(os.path.join(os.getcwd(),'bz',url_add[3:-1],'info.json'), mode='w+',encoding="utf-8")
     f.write(json.dumps(data,ensure_ascii=False))
