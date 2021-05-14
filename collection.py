@@ -31,27 +31,30 @@ def put_collection():
     read_collection()
     for i in range(len(like_list)):
         print(i+1,like_list[i],like_name[i],like_mark[i])
+    input('按下回车继续...')
+    return
 
-def del_collection(id):
+def del_collection(no):
+    no = int(no)
     global like_list,like_name,like_mark
     read_collection()
-    if like_list.count(id):
-        p = like_list.index(id)
-        del like_list[p]
-        del like_name[p]
-        del like_mark[p]
+    if not len(like_list) < no:
+        del like_list[no-1]
+        del like_name[no-1]
+        del like_mark[no-1]
     else:
-        print('id未存在')
+        print('编号未存在')
     save_collection()
 
-def mark_collection(id):
+def mark_collection(no):
+    no = int(no)
     global like_list,like_name,like_mark
     read_collection()
-    if like_list.count(id):
+    if not len(like_list) < no:
         mark = input('输入注释: ')
         if not mark:
             mark = ' '
-        like_mark[like_list.index(id)] = mark
+        like_mark[no-1] = mark
     else:
         print('id未存在')
     save_collection()
