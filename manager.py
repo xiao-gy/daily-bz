@@ -67,7 +67,7 @@ def home(opt):
             download_aria2(headers,link,id)
             get_bzdetail(headers,url_base,i)
     elif opt == '6':
-        opt = input('1) 更新json文件\n2) 更新file.txt\n3) 补全指定id本子图片\n你的选择是: ')
+        opt = input('1) 更新json文件\n2) 更新file.txt\n3) 补全指定id本子图片\n4) 补全全部本子\n你的选择是: ')
         if opt == '1':
             for i in list(os.walk(os.path.join(os.getcwd(),'bz')))[0][1]:
                 url_add = '/g/'+i+'/'
@@ -83,6 +83,8 @@ def home(opt):
             id = input('输入要补全的本子id: ')
             os.system('aria2c --conf-path=./config/aria2.conf -d '+os.path.join(os.getcwd(),'bz',id)+' -i '+os.path.join(os.getcwd(),'bz',id,'file.txt'))
             download_form(id)
+        elif opt == '4':
+            check()
     elif opt == '7':
         opt = input('1) 查看收藏\n2) 添加收藏\n3) 取消收藏\n4) 修改备注\n你的选择是: ')
         if opt == '1':
