@@ -28,10 +28,10 @@ def main(url_base):
     for i in url_list:
         id = i[3:-1]
         print(id)
+        os.mkdir(os.path.join(os.getcwd(),'bz',id))
         link = get_imglink(headers,url_base+i)
-        download_aria2(headers,link,id)
         get_bzdetail(headers,url_base,i)
-        download_form(id)
+        download_aria2(headers,link,id)
 
 if __name__ == "__main__":
     main(url_base)
