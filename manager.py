@@ -1,7 +1,6 @@
 import os
 import json
 import shutil
-from sys import exc_info
 
 from main import main
 from check import check
