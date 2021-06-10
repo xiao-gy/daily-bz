@@ -1,8 +1,10 @@
 import os
 
+from download_form import download_form
+
 def download_aria2(headers,url,id):
     try:
-        print(os.path.join(os.getcwd(),'bz',id))
+        #print(os.path.join(os.getcwd(),'bz',id))
         os.mkdir(os.path.join(os.getcwd(),'bz',id))
     except Exception:
         pass
@@ -12,6 +14,7 @@ def download_aria2(headers,url,id):
     f.close()
     #print('aria2c --conf-path=./config/aria2.conf -d '+os.path.join(os.getcwd(),'bz',id)+' -i '+os.path.join(os.getcwd(),'bz',id,'file.txt'))
     os.system('aria2c --conf-path=./config/aria2.conf -d '+os.path.join(os.getcwd(),'bz',id)+' -i '+os.path.join(os.getcwd(),'bz',id,'file.txt'))
+    download_form(id)
 
 if __name__ == "__main__":
     headers= {
