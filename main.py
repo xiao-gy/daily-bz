@@ -1,4 +1,5 @@
 import os
+from sys import executable
 
 from get_list import get_bzlist
 from get_detail import get_bzdetail
@@ -30,8 +31,11 @@ def main(url_base):
         print(id)
         os.mkdir(os.path.join(os.getcwd(),'bz',id))
         link = get_imglink(headers,url_base+i)
-        get_bzdetail(headers,url_base,i)
-        download_aria2(headers,link,id)
+        try:
+            get_bzdetail(headers,url_base,i)
+            download_aria2(headers,link,id)
+        except Exception:
+            pass
 
 if __name__ == "__main__":
     main(url_base)
