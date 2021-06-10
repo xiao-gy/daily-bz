@@ -2,7 +2,7 @@ import os
 import json
 
 from get_detail import get_bzdetail
-from download_aria2 import download_aria2
+from download import download_aria2
 
 like_list=[]
 like_name=[]

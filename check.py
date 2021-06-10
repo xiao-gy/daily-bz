@@ -1,7 +1,7 @@
 import os
 import json
 
-from download_form import download_form
+from download import download_form
 
 def check():
     for i in list(os.walk(os.path.join(os.getcwd(),'bz')))[0][1]:

@@ -8,12 +8,10 @@ from check import check
 from get_list import get_bzlist
 from get_detail import get_bzdetail
 from get_imglink import get_imglink
-from download_img import download_img
-from download_aria2 import download_aria2
+from download import download_aria2
 from zip import zip_file
 from screen import screen_tag
 from search import search
-from download_form import download_form
 from collection import *
 from setting import *
 
@@ -38,9 +36,8 @@ def home(opt):
     elif opt == '2':
         id = input('输入你要下载的本子id: ')
         link = get_imglink(headers,url_base+'/g/'+id+'/')
-        download_aria2(headers,link,id)
         get_bzdetail(headers,url_base,'/g/'+id+'/')
-        download_form(id)
+        download_aria2(headers,link,id,1)
     elif opt == '3':
         opt = input('1) 筛选包含指定tag的本子\n2) 筛选除了指定tag之外的本子\n你的选择是: ')
         if opt == '1':
@@ -64,10 +61,10 @@ def home(opt):
             id = i[3:-1]
             print(id)
             link = get_imglink(headers,url_base+i)
-            download_aria2(headers,link,id)
             get_bzdetail(headers,url_base,i)
+            download_aria2(headers,link,id,1)
     elif opt == '6':
-        opt = input('1) 更新json文件\n2) 更新file.txt\n3) 补全指定id本子图片\n4) 补全全部本子\n你的选择是: ')
+        opt = input('1) 更新json文件\n2) 更新file.txt\n\n3) 补全全部本子\n你的选择是: ')
         if opt == '1':
             for i in list(os.walk(os.path.join(os.getcwd(),'bz')))[0][1]:
                 url_add = '/g/'+i+'/'
@@ -80,10 +77,6 @@ def home(opt):
                     f.write(i+'\n')
                 f.close()
         elif opt == '3':
-            id = input('输入要补全的本子id: ')
-            os.system('aria2c --conf-path=./config/aria2.conf -d '+os.path.join(os.getcwd(),'bz',id)+' -i '+os.path.join(os.getcwd(),'bz',id,'file.txt'))
-            download_form(id)
-        elif opt == '4':
             check()
     elif opt == '7':
         opt = input('1) 查看收藏\n2) 添加收藏\n3) 取消收藏\n4) 修改备注\n你的选择是: ')
