@@ -1,9 +1,7 @@
 import os
 from sys import executable
 
-from get_list import get_bzlist
-from get_detail import get_bzdetail
-from get_imglink import get_imglink
+from get import *
 from download import download_aria2
 from zip import zip_file
 

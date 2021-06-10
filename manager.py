@@ -5,13 +5,10 @@ from sys import exc_info
 
 from main import main
 from check import check
-from get_list import get_bzlist
-from get_detail import get_bzdetail
-from get_imglink import get_imglink
+from get import *
 from download import download_aria2
 from zip import zip_file
 from screen import screen_tag
-from search import search
 from collection import *
 from setting import *
 

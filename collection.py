@@ -1,7 +1,7 @@
 import os
 import json
 
-from get_detail import get_bzdetail
+from get import get_bzdetail
 from download import download_aria2
 
 like_list=[]
