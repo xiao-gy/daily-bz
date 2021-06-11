@@ -60,7 +60,7 @@ def home(opt):
             get_bzdetail(headers,url_base,i)
             download_aria2(headers,link,id,1)
     elif opt == '6':
-        opt = input('1) 更新json文件\n2) 更新file.txt\n\n3) 补全全部本子\n你的选择是: ')
+        opt = input('1) 更新json文件\n2) 更新file.txt\n3) 补全全部本子\n你的选择是: ')
         if opt == '1':
             for i in list(os.walk(os.path.join(os.getcwd(),'bz')))[0][1]:
                 url_add = '/g/'+i+'/'
