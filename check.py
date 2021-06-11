@@ -17,7 +17,7 @@ def check():
         data = dict(json.load(f))
         if not data['state'] == 'checked':
             os.system('aria2c --conf-path=./config/aria2.conf -d '+os.path.join(os.getcwd(),'bz',i)+' -i '+os.path.join(os.getcwd(),'bz',i,'file.txt'))
-            download_form(i)
+            download_form(i,1)
 
 if __name__ == "__main__":
     check()
