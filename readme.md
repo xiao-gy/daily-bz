@@ -30,7 +30,7 @@ fork本项目后对 `readme.md` 进行修改后，即可在每日的指定时间
 这里仅列举 Ubuntu 的使用方法，其他系统同理
 
 ``` bash
-git clone https://github.com/xiao-gy/daily_bz.git
+git clone https://github.com/xiao-gy/daily_bz.git && cd ./daily_bz
 sudo apt install aria2 -y
 python3-pip install -r requirements.txt
 python3 manager.py
