@@ -25,7 +25,10 @@ def main(url_base):
     for i in url_list:
         id = i[3:-1]
         print(id)
-        os.mkdir(os.path.join(os.getcwd(),'bz',id))
+        try:
+            os.mkdir(os.path.join(os.getcwd(),'bz',id))
+        except Exception:
+            pass
         link = get_imglink(headers,url_base+i)
         try:
             get_bzdetail(headers,url_base,i)
