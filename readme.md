@@ -1,7 +1,8 @@
-# 一个拿来练手的Nyahentai每日本子下载
+# Nyahentai每日本子下载
 
 [![GitHub Stars](https://img.shields.io/github/stars/xiao-gy/daily_bz.svg?style=flat-square&label=Stars&logo=github)](https://github.com/xiao-gy/daily_bz/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/xiao-gy/daily_bz.svg?style=flat-square&label=Forks&logo=github)](https://github.com/xiao-gy/daily_bz/fork)
+
 
 ## 功能和特性
 - 支持 `Github Actions` 每日运行，并自动上传 `cowtransfer` 以取回
