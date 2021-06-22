@@ -25,7 +25,7 @@ def download_form(id,mood):
         f = open(os.path.join(os.getcwd(),'bz',id,'info.json'), mode='w+',encoding="utf-8")
         f.write(json.dumps(data,ensure_ascii=False))
 
-def download_aria2(headers,url,id,mood):
+def download_aria2(url,id,mood):
     try:
         #print(os.path.join(os.getcwd(),'bz',id))
         os.mkdir(os.path.join(os.getcwd(),'bz',id))

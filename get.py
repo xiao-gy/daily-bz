@@ -3,9 +3,12 @@ import json
 import os
 from retrying import retry
 from lxml import etree
+from setting import info
+
+version,headers,url_base,t_tag = info()
 
 @retry(stop_max_attempt_number=5)
-def get_bzlist(headers,url_base):
+def get_bzlist():
     r = requests.get(url_base,headers=headers)
     html = etree.HTML(r.text)
     html_data = html.xpath('//*[@id="content"]/div/div/a/@href')
@@ -16,14 +19,14 @@ def get_bzlist(headers,url_base):
 
 
 @retry(stop_max_attempt_number=5)
-def get_imglink(headers,url):
-    r = requests.get(url+'list2/',headers=headers)
+def get_imglink(url_add):
+    r = requests.get(url_base+url_add+'list2/',headers=headers)
     html = etree.HTML(r.text)
     html_data = html.xpath('//*[@id="image-container"]/img[@class="list-img lazyload"]/@data-src')
     return html_data
 
 @retry(stop_max_attempt_number=5)
-def get_bzdetail(headers,url_base,url_add):
+def get_bzdetail(url_add):
     r = requests.get(url_base+url_add,headers=headers)
     html = etree.HTML(r.text)
     name = html.xpath('//*[@id="info"]/h1/text()')[0]
@@ -43,7 +46,7 @@ def get_bzdetail(headers,url_base,url_add):
     return name,tags,page
 
 @retry(stop_max_attempt_number=5)
-def search(headers,url_base,keyword):
+def search(keyword):
     global url_list
     url_list = []
     r = requests.get(url_base+'/search/q_'+keyword,headers=headers)
@@ -65,6 +68,6 @@ if __name__ == "__main__":
     headers= {
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36'
     }
-    print(get_imglink(headers,'https://zhb.eehentai.com/g/354876/'))
-    get_bzdetail(headers,'https://zhb.eehentai.com','/g/354876/')
-    print(search(headers,'https://zhb.eehentai.com/','泳装'))
+    print(get_imglink('https://zhb.eehentai.com/g/354876/'))
+    get_bzdetail('/g/354876/')
+    print(search('泳装'))

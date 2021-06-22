@@ -4,13 +4,11 @@ from sys import executable
 from get import *
 from download import download_aria2
 from zip import zip_file
+from setting import info
 
-headers= {
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36'
-}
-url_base = 'https://zhb.eehentai.com'
+version,headers,url_base,t_tag = info()
 
-def main(url_base):
+def main():
     try:
         os.mkdir(os.path.join(os.getcwd(),'bz'))
     except Exception:
@@ -21,7 +19,7 @@ def main(url_base):
     except Exception:
         pass
 
-    url_list = get_bzlist(headers,url_base)
+    url_list = get_bzlist()
     for i in url_list:
         id = i[3:-1]
         print(id)
@@ -29,13 +27,13 @@ def main(url_base):
             os.mkdir(os.path.join(os.getcwd(),'bz',id))
         except Exception:
             pass
-        link = get_imglink(headers,url_base+i)
+        link = get_imglink(i)
         try:
-            get_bzdetail(headers,url_base,i)
-            download_aria2(headers,link,id,0)
+            get_bzdetail(i)
+            download_aria2(link,id,0)
         except Exception:
             pass
 
 if __name__ == "__main__":
-    main(url_base)
+    main()
     zip_file('bz')

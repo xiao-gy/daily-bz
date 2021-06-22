@@ -10,13 +10,16 @@ headers = {
 t_tag =[]
 
 def read():
-    f = open(os.path.join(os.getcwd(),'config','config.json'),mode='r',encoding='utf8')
-    conf= json.loads(f.read())
-    version = conf['version']
-    url_base = conf['url_base']
-    headers = conf['headers']
-    t_tag = conf['t_tag']
-    f.close()
+    try:
+        f = open(os.path.join(os.getcwd(),'config','config.json'),mode='r',encoding='utf8')
+        conf= json.loads(f.read())
+        version = conf['version']
+        url_base = conf['url_base']
+        headers = conf['headers']
+        t_tag = conf['t_tag']
+        f.close()
+    except Exception:
+        save()
 
 def save():
     f = open(os.path.join(os.getcwd(),'config','config.json'),mode='w+',encoding='utf8')

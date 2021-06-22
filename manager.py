@@ -28,12 +28,12 @@ def home(opt):
 0) 退出程序
 你的选择是: ''')
     if opt == '1':
-        main(url_base)
+        main()
     elif opt == '2':
         id = input('输入你要下载的本子id: ')
-        link = get_imglink(headers,url_base+'/g/'+id+'/')
-        get_bzdetail(headers,url_base,'/g/'+id+'/')
-        download_aria2(headers,link,id,1)
+        link = get_imglink('/g/'+id+'/')
+        get_bzdetail('/g/'+id+'/')
+        download_aria2(link,id,1)
     elif opt == '3':
         opt = input('1) 筛选包含指定tag的本子\n2) 筛选除了指定tag之外的本子\n你的选择是: ')
         if opt == '1':
@@ -52,19 +52,23 @@ def home(opt):
         zip_file('bz')
         os.system('./cowtransfer-uploader --hash ./bz.zip')
     elif opt == '5':
-        url_list = search(headers,url_base,input('请输入关键词: '))
+        url_list = search(input('请输入关键词: '))
         for i in url_list:
             id = i[3:-1]
             print(id)
-            link = get_imglink(headers,url_base+i)
-            get_bzdetail(headers,url_base,i)
-            download_aria2(headers,link,id,1)
+            try:
+                os.mkdir(os.path.join(os.getcwd(),'bz',id))
+            except Exception:
+                pass
+            link = get_imglink(i)
+            get_bzdetail(i)
+            download_aria2(link,id,1)
     elif opt == '6':
         opt = input('1) 更新json文件\n2) 更新file.txt\n3) 补全全部本子\n你的选择是: ')
         if opt == '1':
             for i in list(os.walk(os.path.join(os.getcwd(),'bz')))[0][1]:
                 url_add = '/g/'+i+'/'
-                get_bzdetail(headers,url_base,url_add)
+                get_bzdetail(url_add)
         elif opt == '2':
             for i in list(os.walk(os.path.join(os.getcwd(),'bz')))[0][1]:
                 link = get_imglink(headers,url_base+'/g/'+i+'/')
@@ -81,7 +85,7 @@ def home(opt):
             home('8')
         elif opt == '2':
             id = input('输入id: ')
-            name,tags,page = get_bzdetail(headers,url_base,'/g/'+id+'/')
+            name,tags,page = get_bzdetail('/g/'+id+'/')
             add_collection(id,name,input('输入注释: '))
         elif opt == '3':
             del_collection(input('输入编号: '))

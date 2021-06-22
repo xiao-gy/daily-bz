@@ -5,14 +5,15 @@ from download import download_form
 from get import get_bzdetail
 from setting import info
 
+version,headers,url_base,t_tag = info()
+
 def check():
-    version,headers,url_base,t_tag = info()
     for i in list(os.walk(os.path.join(os.getcwd(),'bz')))[0][1]:
         try:
             f = open(os.path.join(os.getcwd(),'bz',i,'info.json'), mode='r',encoding="utf-8")
         except Exception:
             url_add = '/g/'+i+'/'
-            get_bzdetail(headers,url_base,url_add)
+            get_bzdetail(url_add)
             f = open(os.path.join(os.getcwd(),'bz',i,'info.json'), mode='r',encoding="utf-8")
         data = dict(json.load(f))
         if not data['state'] == 'checked':
