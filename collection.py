@@ -3,6 +3,7 @@ import json
 
 from get import get_bzdetail
 from download import download_aria2
+from get import *
 
 like_list=[]
 like_name=[]
@@ -82,6 +83,20 @@ def read_collection():
     except Exception:
         save_collection()
 
+def download_collection():
+    for i in like_list:
+        try:
+            os.mkdir(os.path.join(os.getcwd(),'bz',i))
+        except Exception:
+            pass
+        link = get_imglink('/g/'+i+'/')
+        try:
+            get_bzdetail('/g/'+i+'/')
+            download_aria2(link,i,1)
+        except Exception:
+            pass
+
 if __name__ == "__main__":
     read_collection()
     put_collection()
+    download_collection()

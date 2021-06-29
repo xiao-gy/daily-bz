@@ -79,7 +79,7 @@ def home(opt):
         elif opt == '3':
             check()
     elif opt == '7':
-        opt = input('1) 查看收藏\n2) 添加收藏\n3) 取消收藏\n4) 修改备注\n你的选择是: ')
+        opt = input('1) 查看收藏\n2) 添加收藏\n3) 取消收藏\n4) 修改备注\n5) 下载收藏\n你的选择是: ')
         if opt == '1':
             put_collection()
             home('8')
@@ -91,6 +91,8 @@ def home(opt):
             del_collection(input('输入编号: '))
         elif opt == '4':
             mark_collection(input('输入编号: '))
+        elif opt == '5':
+            download_collection()
         home('')
     elif opt == '9':
         setting()
