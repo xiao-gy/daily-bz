@@ -1,5 +1,4 @@
 import os
-import shutil
 import zipfile
 
 def zip_file(src_dir):
