@@ -7,7 +7,6 @@ from check import check
 from get import *
 from download import download_aria2
 from zip import zip_file
-from screen import screen_tag
 from collection import *
 from setting import *
 

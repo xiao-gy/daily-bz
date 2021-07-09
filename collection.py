@@ -96,6 +96,15 @@ def download_collection():
         except Exception:
             pass
 
+def screen_tag(tag,t_tag,bool):
+    if bool == True:
+        return set(t_tag) <= set(tag)
+    else:
+        for i in t_tag:
+            if i in tag:
+                return False
+        return True
+
 if __name__ == "__main__":
     read_collection()
     put_collection()
