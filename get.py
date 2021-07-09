@@ -19,14 +19,20 @@ def get_bzlist():
 
 
 @retry(stop_max_attempt_number=5)
-def get_imglink(url_add):
+def get_imglink(id):
+    url_add = '/g/'+id+'/'
     r = requests.get(url_base+url_add+'list2/',headers=headers)
     html = etree.HTML(r.text)
     html_data = html.xpath('//*[@id="image-container"]/img[@class="list-img lazyload"]/@data-src')
     return html_data
 
 @retry(stop_max_attempt_number=5)
-def get_bzdetail(url_add):
+def get_bzdetail(id):
+    url_add = '/g/'+id+'/'
+    try:
+        os.mkdir(os.path.join(os.getcwd(),'bz',id))
+    except Exception:
+        print('目录已存在')
     r = requests.get(url_base+url_add,headers=headers)
     html = etree.HTML(r.text)
     name = html.xpath('//*[@id="info"]/h1/text()')[0]

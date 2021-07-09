@@ -89,9 +89,9 @@ def download_collection():
             os.mkdir(os.path.join(os.getcwd(),'bz',i))
         except Exception:
             pass
-        link = get_imglink('/g/'+i+'/')
+        link = get_imglink(i)
         try:
-            get_bzdetail('/g/'+i+'/')
+            get_bzdetail(i)
             download_aria2(link,i,1)
         except Exception:
             pass

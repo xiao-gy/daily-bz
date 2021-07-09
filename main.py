@@ -27,9 +27,9 @@ def main():
             os.mkdir(os.path.join(os.getcwd(),'bz',id))
         except Exception:
             pass
-        link = get_imglink(i)
+        link = get_imglink(id)
         try:
-            get_bzdetail(i)
+            get_bzdetail(id)
             download_aria2(link,id,0)
         except Exception:
             pass

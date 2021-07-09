@@ -30,8 +30,8 @@ def home(opt):
         main()
     elif opt == '2':
         id = input('输入你要下载的本子id: ')
-        link = get_imglink('/g/'+id+'/')
-        get_bzdetail('/g/'+id+'/')
+        link = get_imglink(id)
+        get_bzdetail(id)
         download_aria2(link,id,1)
     elif opt == '3':
         opt = input('1) 筛选包含指定tag的本子\n2) 筛选除了指定tag之外的本子\n你的选择是: ')
@@ -59,18 +59,17 @@ def home(opt):
                 os.mkdir(os.path.join(os.getcwd(),'bz',id))
             except Exception:
                 pass
-            link = get_imglink(i)
-            get_bzdetail(i)
+            link = get_imglink(id)
+            get_bzdetail(id)
             download_aria2(link,id,1)
     elif opt == '6':
         opt = input('1) 更新json文件\n2) 更新file.txt\n3) 补全全部本子\n你的选择是: ')
         if opt == '1':
             for i in list(os.walk(os.path.join(os.getcwd(),'bz')))[0][1]:
-                url_add = '/g/'+i+'/'
-                get_bzdetail(url_add)
+                get_bzdetail(i)
         elif opt == '2':
             for i in list(os.walk(os.path.join(os.getcwd(),'bz')))[0][1]:
-                link = get_imglink(headers,url_base+'/g/'+i+'/')
+                link = get_imglink(i)
                 f = open(os.path.join(os.getcwd(),'bz',i,'file.txt'), mode='w+')
                 for i in link:
                     f.write(i+'\n')
@@ -84,7 +83,7 @@ def home(opt):
             home('8')
         elif opt == '2':
             id = input('输入id: ')
-            name,tags,page = get_bzdetail('/g/'+id+'/')
+            name,tags,page = get_bzdetail(id)
             add_collection(id,name,input('输入注释: '))
         elif opt == '3':
             del_collection(input('输入编号: '))
