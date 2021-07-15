@@ -3,6 +3,8 @@
 [![GitHub Stars](https://img.shields.io/github/stars/xiao-gy/daily_bz.svg?style=flat-square&label=Stars&logo=github)](https://github.com/xiao-gy/daily_bz/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/xiao-gy/daily_bz.svg?style=flat-square&label=Forks&logo=github)](https://github.com/xiao-gy/daily_bz/fork)
 
+## 运行状态
+[![Getting daily bz](https://github.com/xiao-gy/daily_bz/actions/workflows/python-publish.yml/badge.svg)](https://github.com/xiao-gy/daily_bz/actions/workflows/python-publish.yml)
 
 ## 功能和特性
 - 支持 `Github Actions` 每日运行，并自动上传 `cowtransfer` 以取回
