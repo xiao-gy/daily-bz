@@ -4,7 +4,7 @@
 [![GitHub forks](https://img.shields.io/github/forks/xiao-gy/daily_bz.svg?style=flat-square&label=Forks&logo=github)](https://github.com/xiao-gy/daily_bz/fork)
 
 ## 运行状态
-[![Getting daily bz](https://github.com/xiao-gy/daily_bz/actions/workflows/python-publish.yml/badge.svg)](https://github.com/xiao-gy/daily_bz/actions/workflows/python-publish.yml)
+[![Getting daily bz](https://github.com/sword-of-silence/daily_bz/actions/workflows/python-publish.yml/badge.svg)](https://github.com/sword-of-silence/daily_bz/actions/workflows/python-publish.yml)
 20210825
 
 ## 功能和特性
