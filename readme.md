@@ -30,7 +30,7 @@ fork本项目后对 `readme.md` 进行修改后，即可在每日的指定时间
 ### Windows
 
 ``` bash
-python3 install -r requirements.txt
+pip install -r requirements.txt
 python3 manager.py
 ```
 
