@@ -32,7 +32,6 @@ def put_collection():
     read_collection()
     for i in range(len(like_list)):
         print(i+1,like_list[i],like_name[i],like_mark[i])
-    input('按下回车继续...')
     return
 
 def del_collection(no):

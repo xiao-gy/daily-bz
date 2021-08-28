@@ -34,7 +34,7 @@ def home(opt):
         get_bzdetail(id)
         download_aria2(link,id,1)
     elif opt == '3':
-        opt = input('1) 筛选包含指定tag的本子\n2) 筛选除了指定tag之外的本子\n你的选择是: ')
+        opt = input('1) 删除不包含指定tag的本子\n2) 删除包含指定tag的本子\n你的选择是: ')
         if opt == '1':
             bool = True
         elif opt == '2':
@@ -77,29 +77,34 @@ def home(opt):
         elif opt == '3':
             check()
     elif opt == '7':
-        opt = input('1) 查看收藏\n2) 添加收藏\n3) 取消收藏\n4) 修改备注\n5) 下载收藏\n你的选择是: ')
+        opt = input('1) 查看收藏\n2) 添加收藏\n3) 取消收藏\n4) 修改备注\n5) 下载收藏\n0) 返回主页\n你的选择是: ')
         if opt == '1':
             put_collection()
-            home('8')
         elif opt == '2':
+            put_collection()
             id = input('输入id: ')
             name,tags,page = get_bzdetail(id)
             add_collection(id,name,input('输入注释: '))
         elif opt == '3':
+            put_collection()
             del_collection(input('输入编号: '))
         elif opt == '4':
+            put_collection()
             mark_collection(input('输入编号: '))
         elif opt == '5':
             download_collection()
-        home('')
+        elif opt == '0':
+            home('')
+        home('7')
     elif opt == '9':
-        setting()
-        home('')    
+        setting()   
     elif opt == '0':
         exit()
     else:
         print('请重新输入')
         home('')
+
+    home('')
 
 try:
     os.mkdir(os.path.join(os.getcwd(),'bz'))
