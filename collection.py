@@ -5,93 +5,78 @@ from get import get_bzdetail
 from download import download_aria2
 from get import *
 
-like_list=[]
-like_name=[]
-like_mark=[]
+list = {"likes":[]}
 
 def add_collection(id,name,mark):
-    global like_list,like_name,like_mark
+    global list
     read_collection()
     if not mark:
         mark = ' '
-    if not like_list.count(id) :
-        if input('是否置顶(y/n): ') == 'y':
-            like_list.insert(0,id)
-            like_name.insert(0,name)
-            like_mark.insert(0,mark)
-        else:
-            like_list.append(id)
-            like_name.append(name)
-            like_mark.append(mark)
+    for i in list['likes']:
+        if i['id'] == id:
+            print("id已存在")
+            return
+    if input('是否置顶(y/n): ') == 'y':
+        list['likes'].insert(0,{"id":id,"name":name,"mark":mark})
     else:
-        print('id已存在')
+        list['likes'].append({"id":id,"name":name,"mark":mark})
     save_collection()
 
 def put_collection():
-    global like_list,like_name,like_mark
+    global list
     read_collection()
-    for i in range(len(like_list)):
-        print(i+1,like_list[i],like_name[i],like_mark[i])
+    for i in range(len(list['likes'])):
+        print(i+1,list['likes'][i]['id'],list['likes'][i]['name'],list['likes'][i]['mark'])
     return
 
 def del_collection(no):
     no = int(no)
-    global like_list,like_name,like_mark
+    global list
     read_collection()
-    if not len(like_list) < no:
-        del like_list[no-1]
-        del like_name[no-1]
-        del like_mark[no-1]
+    if not len(list['likes']) < no:
+        del list['likes'][no]
     else:
         print('编号未存在')
     save_collection()
 
 def mark_collection(no):
     no = int(no)
-    global like_list,like_name,like_mark
+    global list
     read_collection()
-    if not len(like_list) < no:
+    if not len(list['likes']) < no:
         mark = input('输入注释: ')
         if not mark:
             mark = ' '
-        like_mark[no-1] = mark
+        list['likes'][no-1]['mark'] = mark
     else:
         print('id未存在')
     save_collection()
 
 def save_collection():
-    global like_list,like_name,like_mark
+    global list
     f = open(os.path.join(os.getcwd(),'config','like.json'),mode='w+',encoding='utf8')
-    data = {
-        "like_list": like_list,
-        "like_name": like_name,
-        "like_mark": like_mark
-    }
-    f.write(json.dumps(data,ensure_ascii=False))
+    f.write(json.dumps(list,ensure_ascii=False))
     f.close()
 
 def read_collection():
-    global like_list,like_name,like_mark
+    global list
     try:
         f = open(os.path.join(os.getcwd(),'config','like.json'),mode='r',encoding='utf8')
-        conf= json.loads(f.read())
-        like_list = conf['like_list']
-        like_name = conf['like_name']
-        like_mark = conf['like_mark']
+        list = json.loads(f.read())
         f.close()
     except Exception:
         save_collection()
 
 def download_collection():
-    for i in like_list:
+    for i in list['likes']:
         try:
-            os.mkdir(os.path.join(os.getcwd(),'bz',i))
+            os.mkdir(os.path.join(os.getcwd(),'bz',i['id']))
         except Exception:
             pass
-        link = get_imglink(i)
+        link = get_imglink(i['id'])
         try:
-            get_bzdetail(i)
-            download_aria2(link,i,1)
+            get_bzdetail(i['id'])
+            download_aria2(link,i['id'],1)
         except Exception:
             pass
 
@@ -105,6 +90,7 @@ def screen_tag(tag,t_tag,bool):
         return True
 
 if __name__ == "__main__":
+    #add_collection(1,1,1)
     read_collection()
     put_collection()
     download_collection()
