@@ -68,6 +68,7 @@ def read_collection():
         save_collection()
 
 def download_collection():
+    read_collection()
     for i in list['likes']:
         try:
             os.mkdir(os.path.join(os.getcwd(),'bz',i['id']))

@@ -81,7 +81,6 @@ def home(opt):
         if opt == '1':
             put_collection()
         elif opt == '2':
-            put_collection()
             id = input('输入id: ')
             name,tags,page = get_bzdetail(id)
             add_collection(id,name,input('输入注释: '))
