@@ -8,7 +8,6 @@ manager.spec
 /bz
 bz.zip
 
-aria2c.exe
 /config/aria2.session
 /config/aria2.log
 /config/config.json

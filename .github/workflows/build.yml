@@ -29,9 +29,11 @@ jobs:
     - name: Build manager
       run: |
         pyinstaller -F manager.py -i nyahentai.ico
+        move ./config ./dist/config
+        move aria2c.exe ./dist
 
     - name: compile
       uses: actions/upload-artifact@v2
       with: 
         name: manager
-        path: ./dist/manager.exe
+        path: ./dist
