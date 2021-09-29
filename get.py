@@ -32,7 +32,7 @@ def get_bzdetail(id):
     try:
         os.mkdir(os.path.join(os.getcwd(),'bz',id))
     except Exception:
-        print('目录已存在')
+        pass
     r = requests.get(url_base+url_add,headers=headers)
     html = etree.HTML(r.text)
     name = html.xpath('//*[@id="info"]/h1/text()')[0]

@@ -13,6 +13,9 @@ bz.zip
 /config/config.json
 /config/like.json
 /config/like_copy.json
+aria2c
 
 cowtransfer-uploader
 cowtransfer-uploader.exe
+
+.DS_Store

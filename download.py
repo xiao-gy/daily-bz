@@ -14,7 +14,7 @@ def download_form(id,mod):
             else:
                 f.write(k[0:-5]+'.jpg'+'\n')
     f.close()
-    os.system('aria2c --conf-path=./config/aria2.conf -d '+os.path.join(os.getcwd(),'bz',id)+' -i '+os.path.join(os.getcwd(),'bz',id,'temp.txt'))
+    os.system(os.path.join(os.getcwd(),'aria2c') + ' --conf-path=./config/aria2.conf -d '+os.path.join(os.getcwd(),'bz',id)+' -i '+os.path.join(os.getcwd(),'bz',id,'temp.txt'))
     os.remove(os.path.join(os.getcwd(),'bz',id,'temp.txt'))
     #重打标签
     if mod:
@@ -35,8 +35,8 @@ def download_aria2(url,id,mod):
     for i in url:
         f.write(i+'\n')
     f.close()
-    #print('aria2c --conf-path=./config/aria2.conf -d '+os.path.join(os.getcwd(),'bz',id)+' -i '+os.path.join(os.getcwd(),'bz',id,'file.txt'))
-    os.system('aria2c --conf-path=./config/aria2.conf -d '+os.path.join(os.getcwd(),'bz',id)+' -i '+os.path.join(os.getcwd(),'bz',id,'file.txt'))
+    #print(os.path.join(os.getcwd(),'aria2c') + ' --conf-path=./config/aria2.conf -d '+os.path.join(os.getcwd(),'bz',id)+' -i '+os.path.join(os.getcwd(),'bz',id,'file.txt'))
+    os.system(os.path.join(os.getcwd(),'aria2c') + ' --conf-path=./config/aria2.conf -d '+os.path.join(os.getcwd(),'bz',id)+' -i '+os.path.join(os.getcwd(),'bz',id,'file.txt'))
     download_form(id,mod)
 
 if __name__ == "__main__":
