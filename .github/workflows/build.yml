@@ -1,0 +1,39 @@
+# This workflow will upload a Python Package using Twine when a release is created
+# For more information see: https://help.github.com/en/actions/language-and-framework-guides/using-python-with-github-actions#publishing-to-package-registries
+
+name: Build manager on Windows
+
+on:
+  push:
+    branches:    
+      - master
+
+jobs:
+  deploy:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pyinstaller
+
+    - name: Build manager
+      run: |
+        pyinstaller -F manager.py -i nyahentai.ico
+        move ./config ./dist/config
+        move aria2c.exe ./dist
+
+    - name: compile
+      uses: actions/upload-artifact@v2
+      with: 
+        name: manager
+        path: ./dist

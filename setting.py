@@ -2,7 +2,7 @@ import os
 import json
 
 #输入程序基本信息
-version = 'v0.3'
+version = 'v0.4'
 url_base = 'https://zhb.eehentai.com'
 headers = {
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36'
@@ -45,7 +45,7 @@ def setting():
     if opt == '1':
         url_base = input('新网址: ')
     elif opt == '2':
-        t_tag = input('输入t_tag列表(请直接使用,分割): ').strip(',').split(',')
+        t_tag = input('输入筛选tag列表(请直接使用,分割): ').strip(',').split(',')
     save()
 
 if __name__ == "__main__":

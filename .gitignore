@@ -8,11 +8,14 @@ manager.spec
 /bz
 bz.zip
 
-aria2c.exe
 /config/aria2.session
 /config/aria2.log
 /config/config.json
 /config/like.json
+/config/like_copy.json
+aria2c
 
 cowtransfer-uploader
 cowtransfer-uploader.exe
+
+.DS_Store
