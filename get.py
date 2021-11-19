@@ -8,8 +8,8 @@ from setting import info
 version,headers,url_base,t_tag = info()
 
 @retry(stop_max_attempt_number=5)
-def get_bzlist():
-    r = requests.get(url_base,headers=headers)
+def get_bzlist(url):
+    r = requests.get(url,headers=headers)
     html = etree.HTML(r.text)
     html_data = html.xpath('//*[@id="content"]/div/div/a/@href')
     url_list=[]
@@ -63,17 +63,14 @@ def search(keyword):
         page_sum = 1
     page = int(input('共 '+str(page_sum)+' 页,请输入你要下载的页数: '))
     for i in range(min(page,page_sum)):
-        r = requests.get(url_base+'/search/q_'+keyword+'/page/'+str(i+1),headers=headers)
-        html = etree.HTML(r.text)
-        html_data = html.xpath('//*[@id="content"]/div/div/a/@href')
-        for i in html_data:
-            url_list.append(i)
+        url_list = url_list+get_bzlist(url_base+'/search/q_'+keyword+'/page/'+str(i+1))
     return url_list
 
 if __name__ == "__main__":
     headers= {
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36'
     }
+    print(get_bzlist(url_base))
     print(get_imglink('https://zhb.eehentai.com/g/354876/'))
     get_bzdetail('/g/354876/')
     print(search('泳装'))

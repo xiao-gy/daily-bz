@@ -18,7 +18,7 @@ def main():
     except Exception:
         pass
 
-    url_list = get_bzlist()
+    url_list = get_bzlist(url_base)
     for i in url_list:
         id = i[3:-1]
         print(id)
