@@ -1,5 +1,4 @@
 import os
-from sys import executable
 
 from get import *
 from download import download_aria2
