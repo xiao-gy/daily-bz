@@ -9,10 +9,10 @@ except:
 f = open(os.path.join(os.getcwd(),'config','like_copy.json'),mode='r',encoding='utf8')
 likes = json.loads(f.read())
 
-list={"likes":[]}
+list = {"likes":[{"name":"默认收藏夹","contents":[]}]}
 
-for i in range(0,len(likes['like_list'])):
-    list['likes'].append({"id":likes['like_list'][i],"name":likes['like_name'][i],"mark":likes['like_mark'][i]})
+for i in likes['likes']:
+    list['likes'][0]['contents'].append({"id":i['id'],"name":i['name'],"mark":i['mark']})
 
 f = open(os.path.join(os.getcwd(),'config','like.json'),mode='w+',encoding='utf8')
 f.write(json.dumps(list,ensure_ascii=False))
