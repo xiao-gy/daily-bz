@@ -13,19 +13,28 @@ from setting import *
 def collection(opt = ''):
     opt = input('1) 查看收藏\n2) 添加收藏\n3) 取消收藏\n4) 修改备注\n5) 下载收藏\n0) 返回主页\n你的选择是: ')
     if opt == '1':
-        put_collection()
+        put_fold()
+        no = int(input('输入要输出的收藏夹编号: '))
+        put_collection(no)
     elif opt == '2':
         id = input('输入id: ')
+        no = int(input('输入要收藏的收藏夹编号: '))
         name,tags,page = get_bzdetail(id)
-        add_collection(id,name,input('输入注释: '))
+        add_collection(no,id,name,input('输入注释: '))
     elif opt == '3':
-        put_collection()
-        del_collection(input('输入编号: '))
+        put_fold()
+        no = int(input('输入要删除内容的的收藏夹编号: '))
+        put_collection(no)
+        del_collection(no,input('输入编号: '))
     elif opt == '4':
-        put_collection()
-        mark_collection(input('输入编号: '))
+        put_fold()
+        no = int(input('输入要修改注释内容的的收藏夹编号: '))
+        put_collection(no)
+        mark_collection(no,input('输入编号: '))
     elif opt == '5':
-        download_collection()
+        put_fold()
+        no = int(input('输入要下载内容的的收藏夹编号: '))
+        download_collection(no)
     elif opt == '0':
         return
     collection()

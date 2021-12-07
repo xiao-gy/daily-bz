@@ -5,49 +5,58 @@ from get import get_bzdetail
 from download import download_aria2
 from get import *
 
-list = {"likes":[]}
+list = {"likes":[{"name":"默认收藏夹","contents":[]}]}
 
-def add_collection(id,name,mark):
+def put_fold():
+    global list
+    read_collection()
+    for i in range(len(list['likes'])):
+        print(i+1,list['likes'][i]['name'],len(list['likes'][i]['contents']))
+    return
+
+def add_collection(no,id,name,mark):
     global list
     read_collection()
     if not mark:
         mark = ' '
-    for i in list['likes']:
+    for i in list['likes'][no]['contents']:
         if i['id'] == id:
             print("id已存在")
             return
     if input('是否置顶(y/n): ') == 'y':
-        list['likes'].insert(0,{"id":id,"name":name,"mark":mark})
+        list['likes'][no]['contents'].insert(0,{"id":id,"name":name,"mark":mark})
     else:
-        list['likes'].append({"id":id,"name":name,"mark":mark})
+        list['likes'][no]['contents'].append({"id":id,"name":name,"mark":mark})
     save_collection()
 
-def put_collection():
+def put_collection(no=-1):
     global list
     read_collection()
-    for i in range(len(list['likes'])):
-        print(i+1,list['likes'][i]['id'],list['likes'][i]['name'],list['likes'][i]['mark'])
+    if no == -1:
+        no  = int(input('输入要输出的收藏夹编号: '))
+    for i in range(len(list['likes'][no]['contents'])):
+        print(i+1,list['likes'][no]['contents'][i]['id'],list['likes'][no]['contents'][i]['name'],list['likes'][no]['contents'][i]['mark'])
     return
 
-def del_collection(no):
-    no = int(no)
+def del_collection(no,opt):
+    opt = int(opt)
     global list
     read_collection()
-    if not len(list['likes']) < no:
-        del list['likes'][no]
+    if not len(list['likes'][no]['contents']) < opt:
+        del list['likes'][no]['contents'][opt-1]
     else:
         print('编号未存在')
     save_collection()
 
-def mark_collection(no):
-    no = int(no)
+def mark_collection(no,opt):
+    opt = int(opt)
     global list
     read_collection()
-    if not len(list['likes']) < no:
+    if not len(list['likes'][no]['contents']) < opt:
         mark = input('输入注释: ')
         if not mark:
             mark = ' '
-        list['likes'][no-1]['mark'] = mark
+        list['likes'][no]['contents'][opt-1]['mark'] = mark
     else:
         print('id未存在')
     save_collection()
@@ -67,9 +76,9 @@ def read_collection():
     except Exception:
         save_collection()
 
-def download_collection():
+def download_collection(no):
     read_collection()
-    for i in list['likes']:
+    for i in list['likes'][no]['contents']:
         try:
             os.mkdir(os.path.join(os.getcwd(),'bz',i['id']))
         except Exception:
@@ -91,7 +100,9 @@ def screen_tag(tag,t_tag,bool):
         return True
 
 if __name__ == "__main__":
-    #add_collection(1,1,1)
     read_collection()
-    put_collection()
-    download_collection()
+    add_collection(0,1,1,1)
+    put_fold()
+    put_collection(0)
+    del_collection(0,1)
+    #download_collection()
