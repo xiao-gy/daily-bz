@@ -34,8 +34,11 @@ def put_collection(no=-1):
     read_collection()
     if no == -1:
         no  = int(input('输入要输出的收藏夹编号: '))
-    for i in range(len(list['likes'][no]['contents'])):
-        print(i+1,list['likes'][no]['contents'][i]['id'],list['likes'][no]['contents'][i]['name'],list['likes'][no]['contents'][i]['mark'])
+    if len(list['likes'][no]['contents']) == 0:
+        print('该收藏夹为空')
+    else:
+        for i in range(len(list['likes'][no]['contents'])):
+            print(i+1,list['likes'][no]['contents'][i]['id'],list['likes'][no]['contents'][i]['name'],list['likes'][no]['contents'][i]['mark'])
     return
 
 def del_collection(no,opt):
