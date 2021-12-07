@@ -18,6 +18,7 @@ def collection(opt = ''):
         put_collection(no)
     elif opt == '2':
         id = input('输入id: ')
+        put_fold()
         no = int(input('输入要收藏的收藏夹编号: '))
         name,tags,page = get_bzdetail(id)
         add_collection(no,id,name,input('输入注释: '))
