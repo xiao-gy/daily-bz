@@ -15,6 +15,7 @@ def put_fold():
     return
 
 def add_collection(no,id,name,mark):
+    no = no-1
     global list
     read_collection()
     if not mark:
@@ -34,6 +35,7 @@ def put_collection(no=-1):
     read_collection()
     if no == -1:
         no  = int(input('输入要输出的收藏夹编号: '))
+    no = no-1
     if len(list['likes'][no]['contents']) == 0:
         print('该收藏夹为空')
     else:
@@ -42,6 +44,7 @@ def put_collection(no=-1):
     return
 
 def del_collection(no,opt):
+    no = no-1
     opt = int(opt)
     global list
     read_collection()
@@ -52,6 +55,7 @@ def del_collection(no,opt):
     save_collection()
 
 def mark_collection(no,opt):
+    no = no-1
     opt = int(opt)
     global list
     read_collection()
@@ -80,6 +84,7 @@ def read_collection():
         save_collection()
 
 def download_collection(no):
+    no = no-1
     read_collection()
     for i in list['likes'][no]['contents']:
         try:
