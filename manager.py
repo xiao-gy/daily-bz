@@ -11,29 +11,34 @@ from collection import *
 from setting import *
 
 def collection(opt = ''):
-    opt = input('1) 查看收藏\n2) 添加收藏\n3) 取消收藏\n4) 修改备注\n5) 下载收藏\n0) 返回主页\n你的选择是: ')
+    put_fold()
+    opt = input('1) 进入收藏夹\n2) 新建收藏夹\n3) 删除收藏夹\n4) 修改收藏夹名\n5) 下载收藏夹\n0) 返回主页\n你的选择是: ')
     if opt == '1':
-        put_fold()
-        no = int(input('输入要输出的收藏夹编号: '))
+        no = int(input('输入要进入的收藏夹编号: '))
         put_collection(no)
+        opt = input('1) 查看收藏\n2) 添加收藏\n3) 取消收藏\n4) 修改备注\n5) 下载收藏\n0) 返回上级\n你的选择是: ')
+        if opt == '1':
+            put_collection(no)
+        elif opt == '2':
+            id = input('输入id: ')
+            name,tags,page = get_bzdetail(id)
+            add_collection(no,id,name,input('输入注释: '))
+        elif opt == '3':
+            del_collection(no,input('输入编号: '))
+        elif opt == '4':
+            mark_collection(no,input('输入编号: '))
+        elif opt == '5':
+            download_collection(no)
     elif opt == '2':
-        id = input('输入id: ')
-        put_fold()
-        no = int(input('输入要收藏的收藏夹编号: '))
-        name,tags,page = get_bzdetail(id)
-        add_collection(no,id,name,input('输入注释: '))
+        name = input('输入要新建收藏夹名: ')
+        add_fold(name)
     elif opt == '3':
-        put_fold()
-        no = int(input('输入要删除内容的的收藏夹编号: '))
-        put_collection(no)
-        del_collection(no,input('输入编号: '))
+        no = int(input('输入要删除的的收藏夹编号: '))
+        del_fold(no)
     elif opt == '4':
-        put_fold()
-        no = int(input('输入要修改注释内容的的收藏夹编号: '))
-        put_collection(no)
-        mark_collection(no,input('输入编号: '))
+        no = int(input('输入要修改名称的的收藏夹编号: '))
+        rename_fold(no)
     elif opt == '5':
-        put_fold()
         no = int(input('输入要下载内容的的收藏夹编号: '))
         download_collection(no)
     elif opt == '0':
