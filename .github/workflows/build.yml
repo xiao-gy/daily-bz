@@ -26,12 +26,16 @@ jobs:
         pip install -r requirements.txt
         pip install pyinstaller
 
+  build:
+    steps:
     - name: Build manager
       run: |
         pyinstaller -F manager.py -i nyahentai.ico
         move ./config ./dist/config
         move aria2c.exe ./dist
 
+  upload:
+    steps:
     - name: compile
       uses: actions/upload-artifact@v2
       with: 
