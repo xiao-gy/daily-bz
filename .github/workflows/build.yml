@@ -27,6 +27,10 @@ jobs:
         pip install pyinstaller
 
   build:
+
+    needs: [deploy]
+    runs-on: windows-latest
+
     steps:
     - name: Build manager
       run: |
@@ -35,6 +39,10 @@ jobs:
         move aria2c.exe ./dist
 
   upload:
+
+    needs: [deploy,build]
+    runs-on: windows-latest
+
     steps:
     - name: compile
       uses: actions/upload-artifact@v2

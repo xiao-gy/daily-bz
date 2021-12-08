@@ -28,12 +28,20 @@ jobs:
         pip install -r requirements.txt
 
   get:
+
+    needs: [deploy]
+    runs-on: ubuntu-latest
+
     steps:
     - name: Getting bz
       run: |
         python3 main.py
 
   uplaod:
+
+    needs: [deploy,get]
+    runs-on: ubuntu-latest
+
     steps:
     - name: Upload bz
       run: |
