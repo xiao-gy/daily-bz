@@ -10,9 +10,31 @@ list = {"likes":[{"name":"默认收藏夹","contents":[]}]}
 def put_fold():
     global list
     read_collection()
+    print('===========收藏夹===========')
     for i in range(len(list['likes'])):
         print(i+1,list['likes'][i]['name'],len(list['likes'][i]['contents']))
     return
+
+def add_fold(name):
+    read_collection()
+    list['likes'].append({"name":name,"contents":[]})
+    save_collection()
+
+def del_fold(no):
+    no = no - 1
+    read_collection()
+    if input('是否删除收藏夹 '+list['likes'][no]['name']+' (y/n): ') == 'y':
+        del list['likes'][no]
+        save_collection()
+    else:
+        print('取消删除 '+list['likes'][no]['name'])
+
+def rename_fold(no):
+    no = no - 1
+    read_collection()
+    name = input('输入你要将 '+list['likes'][no]['name']+' 修改的名字: ')
+    list['likes'][no-1]['name'] = name
+    save_collection()
 
 def add_collection(no,id,name,mark):
     no = no-1
@@ -35,7 +57,7 @@ def put_collection(no=-1):
     read_collection()
     if no == -1:
         no  = int(input('输入要输出的收藏夹编号: '))
-    no = no-1
+    no = no - 1
     if len(list['likes'][no]['contents']) == 0:
         print('该收藏夹为空')
     else:
