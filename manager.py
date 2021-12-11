@@ -29,7 +29,7 @@ def collection(opt = ''):
             mark_collection(no,input('输入编号: '))
         elif opt == '5':
             download_collection(no)
-        elif opt == '5':
+        elif opt == '6':
             share_fold(no)
     elif opt == '2':
         name = input('输入要新建的收藏夹名: ')
