@@ -5,7 +5,7 @@ from download import download_form
 from get import get_bzdetail
 from setting import info
 
-version,headers,url_base,t_tag = info()
+version,headers,url_base,t_tag,nick = info()
 
 def check():
     for i in list(os.walk(os.path.join(os.getcwd(),'bz')))[0][1]:

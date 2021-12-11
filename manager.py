@@ -12,11 +12,11 @@ from setting import *
 
 def collection(opt = ''):
     put_fold()
-    opt = input('1) 进入收藏夹\n2) 新建收藏夹\n3) 删除收藏夹\n4) 修改收藏夹名\n5) 下载收藏夹\n0) 返回主页\n你的选择是: ')
+    opt = input('1) 进入收藏夹\n2) 新建收藏夹\n3) 删除收藏夹\n4) 修改收藏夹名\n5) 下载收藏夹\n6) 分享收藏夹\n7) 导入收藏夹\n0) 返回主页\n你的选择是: ')
     if opt == '1':
         no = int(input('输入要进入的收藏夹编号: '))
         put_collection(no)
-        opt = input('1) 查看收藏\n2) 添加收藏\n3) 取消收藏\n4) 修改备注\n5) 下载收藏\n0) 返回上级\n你的选择是: ')
+        opt = input('1) 查看收藏\n2) 添加收藏\n3) 取消收藏\n4) 修改备注\n5) 下载收藏\n6) 分享收藏夹\n0) 返回上级\n你的选择是: ')
         if opt == '1':
             put_collection(no)
         elif opt == '2':
@@ -29,18 +29,25 @@ def collection(opt = ''):
             mark_collection(no,input('输入编号: '))
         elif opt == '5':
             download_collection(no)
+        elif opt == '5':
+            share_fold(no)
     elif opt == '2':
-        name = input('输入要新建收藏夹名: ')
+        name = input('输入要新建的收藏夹名: ')
         add_fold(name)
     elif opt == '3':
-        no = int(input('输入要删除的的收藏夹编号: '))
+        no = int(input('输入要删除的收藏夹编号: '))
         del_fold(no)
     elif opt == '4':
-        no = int(input('输入要修改名称的的收藏夹编号: '))
+        no = int(input('输入要修改名称的收藏夹编号: '))
         rename_fold(no)
     elif opt == '5':
-        no = int(input('输入要下载内容的的收藏夹编号: '))
+        no = int(input('输入要下载内容的收藏夹编号: '))
         download_collection(no)
+    elif opt == '6':
+        no = int(input('输入要分享的收藏夹编号: '))
+        share_fold(no)
+    elif opt == '7':
+        load_fold()
     elif opt == '0':
         return
     collection()
@@ -91,7 +98,7 @@ def screen():
 def home(opt = ''):
     global info
     #各项变量设置
-    version,headers,url_base,t_tag = info()
+    version,headers,url_base,t_tag,nick = info()
     if opt == '':
         opt=input('''=================欢迎使用Daily_bz=================
 1) 爬取本子

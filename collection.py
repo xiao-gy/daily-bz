@@ -1,18 +1,28 @@
 import os
 import json
+from random import expovariate
 
 from get import get_bzdetail
 from download import download_aria2
 from get import *
 
-list = {"likes":[{"name":"默认收藏夹","contents":[]}]}
+list = {"likes":[{"name":"默认收藏夹","contents":[]}],"others":[]}
 
 def put_fold():
     global list
     read_collection()
     print('===========收藏夹===========')
+    print('自有收藏夹:')
+    if len(list['likes']) == 0 :
+        print('无收藏夹')
     for i in range(len(list['likes'])):
         print(i+1,list['likes'][i]['name'],len(list['likes'][i]['contents']))
+    print('其他收藏夹(来自分享\推荐):')
+    if len(list['others']) == 0 :
+        print('无收藏夹')
+    for i in range(len(list['others'])):
+        print(i+len(list['likes'])+1,list['others'][i]['name'],len(list['others'][i]['contents']))
+    print()
     return
 
 def add_fold(name):
@@ -21,25 +31,64 @@ def add_fold(name):
     save_collection()
 
 def del_fold(no):
-    no = no - 1
     read_collection()
-    if input('是否删除收藏夹 '+list['likes'][no]['name']+' (y/n): ') == 'y':
-        del list['likes'][no]
+    if no > len(list['likes']):
+        sort = 'others'
+        no = no - len(list['likes'])
+    else:
+        sort = 'likes'
+    no = no - 1
+    if input('是否删除收藏夹 '+list[sort][no]['name']+' (y/n): ') == 'y':
+        del list[sort][no]
         save_collection()
     else:
-        print('取消删除 '+list['likes'][no]['name'])
+        print('取消删除 '+list[sort][no]['name'])
 
 def rename_fold(no):
-    no = no - 1
     read_collection()
+    if no > len(list['likes']):
+        print('你只能修改自己的收藏夹!')
+        return
+    no = no - 1
     name = input('输入你要将 '+list['likes'][no]['name']+' 修改的名字: ')
     list['likes'][no-1]['name'] = name
     save_collection()
 
+def share_fold(no):
+    version,headers,url_base,t_tag,nick = info()
+    if no > len(list['likes']):
+        sort = 'others'
+        no = no - len(list['likes'])
+    else:
+        sort = 'likes'
+    no = no - 1
+    read_collection()
+    f = open(os.path.join(os.getcwd(),'share.json'),mode='w+',encoding='utf8')
+    share = {"shared":[list[sort][no]]}
+    share['shared'][0]['name'] = share['shared'][0]['name'] + '#' + nick
+    f.write(json.dumps(share,ensure_ascii=False))
+    f.close()
+    print('文件生成 '+os.path.join(os.getcwd(),'share.json'))
+
+def load_fold():
+    read_collection()
+    print('从 '+os.path.join(os.getcwd(),'share.json')+' 导入')
+    try:
+        f = open(os.path.join(os.getcwd(),'share.json'),mode='r',encoding='utf8')
+        share = json.loads(f.read())
+        list['others'] = list['others'] + share['shared']
+        f.close()
+    except Exception:
+        print('导入错误')
+    save_collection()
+
 def add_collection(no,id,name,mark):
-    no = no-1
     global list
     read_collection()
+    if no > len(list['likes']):
+        print('你只能修改自己的收藏夹!')
+        return
+    no = no-1
     if not mark:
         mark = ' '
     for i in list['likes'][no]['contents']:
@@ -57,30 +106,46 @@ def put_collection(no=-1):
     read_collection()
     if no == -1:
         no  = int(input('输入要输出的收藏夹编号: '))
+    if no > len(list['likes']):
+        sort = 'others'
+        no = no - len(list['likes'])
+    else:
+        sort = 'likes'
     no = no - 1
-    if len(list['likes'][no]['contents']) == 0:
+    if len(list[sort][no]['contents']) == 0:
         print('该收藏夹为空')
     else:
-        for i in range(len(list['likes'][no]['contents'])):
-            print(i+1,list['likes'][no]['contents'][i]['id'],list['likes'][no]['contents'][i]['name'],list['likes'][no]['contents'][i]['mark'])
+        for i in range(len(list[sort][no]['contents'])):
+            print(i+1,list[sort][no]['contents'][i]['id'],list[sort][no]['contents'][i]['name'],list[sort][no]['contents'][i]['mark'])
     return
 
 def del_collection(no,opt):
-    no = no-1
-    opt = int(opt)
     global list
     read_collection()
-    if not len(list['likes'][no]['contents']) < opt:
-        del list['likes'][no]['contents'][opt-1]
+    if no > len(list['likes']):
+        print('你只能修改自己的收藏夹!')
+        return
+    no = no-1
+    if no > len(list['likes']):
+        sort = 'others'
+        no = no - len(list['likes'])
+    else:
+        sort = 'likes'
+    opt = int(opt)
+    if not len(list[sort][no]['contents']) < opt:
+        del list[sort][no]['contents'][opt-1]
     else:
         print('编号未存在')
     save_collection()
 
 def mark_collection(no,opt):
+    read_collection()
+    global list
+    if no > len(list['likes']):
+        print('你只能修改自己的收藏夹!')
+        return
     no = no-1
     opt = int(opt)
-    global list
-    read_collection()
     if not len(list['likes'][no]['contents']) < opt:
         mark = input('输入注释: ')
         if not mark:
@@ -106,9 +171,14 @@ def read_collection():
         save_collection()
 
 def download_collection(no):
-    no = no-1
     read_collection()
-    for i in list['likes'][no]['contents']:
+    if no > len(list['likes']):
+        sort = 'others'
+        no = no - len(list['likes'])
+    else:
+        sort = 'likes'
+    no = no-1
+    for i in list[sort][no]['contents']:
         try:
             os.mkdir(os.path.join(os.getcwd(),'bz',i['id']))
         except Exception:
@@ -134,5 +204,5 @@ if __name__ == "__main__":
     add_collection(0,1,1,1)
     put_fold()
     put_collection(0)
-    del_collection(0,1)
-    #download_collection()
+    del_collection(1,1)
+    #download_collection('likes',1)

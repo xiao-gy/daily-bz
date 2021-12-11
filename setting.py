@@ -2,12 +2,13 @@ import os
 import json
 
 #输入程序基本信息
-version = 'v0.4'
+version = 'v0.5'
 url_base = 'https://zhb.eehentai.com'
 headers = {
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36'
     }
 t_tag =[]
+nick = 'hentai'
 
 def read():
     try:
@@ -17,6 +18,7 @@ def read():
         url_base = conf['url_base']
         headers = conf['headers']
         t_tag = conf['t_tag']
+        nick = conf['nick']
         f.close()
     except Exception:
         save()
@@ -27,7 +29,8 @@ def save():
         "version": version,
         "url_base": url_base,
         "headers": headers,
-        "t_tag": t_tag
+        "t_tag": t_tag,
+        "nick": nick
     }
     f.write(json.dumps(data,ensure_ascii=False))
     f.close()
@@ -37,15 +40,17 @@ def info():
         read()
     except Exception:
         pass
-    return version,headers,url_base,t_tag
+    return version,headers,url_base,t_tag,nick
 
 def setting():
-    global url_base,t_tag
-    opt = input('1) 更新 Nyahentai 网址\n2) 输入 t_tag\n你的选择是: ')
+    global url_base,t_tag,nick
+    opt = input('1) 更新 Nyahentai 网址\n2) 输入 t_tag\n3) 修改昵称\n你的选择是: ')
     if opt == '1':
         url_base = input('新网址: ')
     elif opt == '2':
         t_tag = input('输入筛选tag列表(请直接使用,分割): ').strip(',').split(',')
+    elif opt == '3':
+        nick = input('输入你要修改的昵称: ')
     save()
 
 if __name__ == "__main__":

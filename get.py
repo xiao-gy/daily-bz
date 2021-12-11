@@ -5,7 +5,7 @@ from retrying import retry
 from lxml import etree
 from setting import info
 
-version,headers,url_base,t_tag = info()
+version,headers,url_base,t_tag,nick = info()
 
 @retry(stop_max_attempt_number=5)
 def get_bzlist(url):

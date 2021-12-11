@@ -5,7 +5,7 @@ from download import download_aria2
 from zip import zip_file
 from setting import info
 
-version,headers,url_base,t_tag = info()
+version,headers,url_base,t_tag,nick = info()
 
 def main():
     try:
