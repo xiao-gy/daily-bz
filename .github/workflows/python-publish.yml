@@ -35,3 +35,6 @@ jobs:
       run: |
         curl -sL https://git.io/cowtransfer | sh 
         ./cowtransfer-uploader --hash ./bz.zip
+    - name: Search bz
+      run: |
+        python3 auto_search.py
