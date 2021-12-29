@@ -61,7 +61,8 @@ def search(keyword):
         page_sum = int(html.xpath('//*[@id="content"]/section/span[@class="last"]/a/@data-ci-pagination-page')[0])
     except Exception:
         page_sum = 1
-    page = int(input('共 '+str(page_sum)+' 页,请输入你要下载的页数: '))
+#     page = int(input('共 '+str(page_sum)+' 页,请输入你要下载的页数: '))
+    pahe = 50
     for i in range(min(page,page_sum)):
         r = requests.get(url_base+'/search/q_'+keyword+'/page/'+str(i+1),headers=headers)
         html = etree.HTML(r.text)
