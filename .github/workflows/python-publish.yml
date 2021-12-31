@@ -27,12 +27,12 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-#     - name: Getting bz
-#       run: |
-#         python3 main.py
-    - name: Search bz
+    - name: Getting bz
       run: |
-        python3 auto_search.py
+        python3 main.py
+#     - name: Search bz
+#       run: |
+#         python3 auto_search.py
 
     - name: Upload bz
       run: |
