@@ -1,19 +1,20 @@
-# Nyahentai每日本子下载
+# Nhentai每日本子下载
 
-[![GitHub Stars](https://img.shields.io/github/stars/xiao-gy/daily_bz.svg?style=flat-square&label=Stars&logo=github)](https://github.com/xiao-gy/daily_bz/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/xiao-gy/daily_bz.svg?style=flat-square&label=Forks&logo=github)](https://github.com/xiao-gy/daily_bz/fork)
+[![GitHub Stars](https://img.shields.io/github/stars/xiao-gy/daily-bz.svg?style=flat-square&label=Stars&logo=github)](https://github.com/xiao-gy/daily-bz/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/xiao-gy/daily-bz.svg?style=flat-square&label=Forks&logo=github)](https://github.com/xiao-gy/daily-bz/fork)
 
 ## 提示
+由于近期 `Nyahentai` 及其镜像站关停，现转为爬取 `Nhentai` 之内容，原先代码可在 `nyahentai` 分支下使用。
 
-由于最近 Nyahentai 的所有镜像站以及姐妹站的服务的不稳定，本程序运行成功率大幅下降，请耐心等待源站恢复QAQ
+本程序暂未直接代理，需要本地运行者可以到 `get.py` 文件自己取消相关代码注释。
 
 ## 运行状态
-[![Getting daily bz](https://github.com/xiao-gy/daily_bz/actions/workflows/python-publish.yml/badge.svg)](https://github.com/xiao-gy/daily_bz/actions/workflows/python-publish.yml)
+[![Getting daily bz](https://github.com/xiao-gy/daily-bz/actions/workflows/daily-bz.yml/badge.svg)](https://github.com/xiao-gy/daily-bz/actions/workflows/daily-bz.yml)
 
 ## 功能和特性
 - 支持 `Github Actions` 每日运行，并自动上传 `cowtransfer` 以取回
-- 爬取 Nyahentai 并获取首页上的所有本子的链接
-- 内置 requests 和 aria2 两种可选的下载方式
+- 爬取 Nhentai 并获取首页上的所有本子的链接
+- ~~内置 requests 和 aria2 两种可选的下载方式~~
 - 内置更加简单易用的 aria2 配置文件
 - 内置 manager ，对新手更加友好
 - 新增 check 功能，可以检查本子下载的完整性
@@ -46,7 +47,7 @@ python3 manager.py
 这里仅列举 Ubuntu系统 下的使用方法，其他系统同理
 
 ``` bash
-git clone https://github.com/xiao-gy/daily_bz.git && cd ./daily_bz
+git clone https://github.com/xiao-gy/daily-bz.git && cd ./daily_bz
 sudo apt install aria2 -y
 python3-pip install -r requirements.txt
 python3 manager.py

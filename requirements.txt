@@ -1,4 +1,4 @@
 requests
 retrying
 lxml
-quote
+pysocks
