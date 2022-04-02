@@ -6,7 +6,7 @@ name: Build manager on Windows
 on:
   push:
     branches:    
-      - master
+      - nhentai
 
 jobs:
   deploy:
