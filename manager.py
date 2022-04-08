@@ -68,7 +68,7 @@ def repair(opt = ''):
         check()
 
 def search():
-    url_list = search(input('请输入关键词: '))
+    url_list = get_search(input('请输入关键词: '))
     for i in url_list:
         id = i[3:-1]
         print(id)

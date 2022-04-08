@@ -70,7 +70,7 @@ def get_bzdetail(id):
 
 #finish
 @retry(stop_max_attempt_number=5)
-def search(keyword):
+def get_search(keyword):
     global url_list
     url_list = []
     #r = requests.get(url_base+'/search/?q='+keyword,headers=headers,proxies=proxies,verify=False)
