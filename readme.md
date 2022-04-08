@@ -12,7 +12,7 @@
 [![Getting daily bz](https://github.com/xiao-gy/daily-bz/actions/workflows/daily-bz.yml/badge.svg)](https://github.com/xiao-gy/daily-bz/actions/workflows/daily-bz.yml)
 
 ## 功能和特性
-- 支持 `Github Actions` 每日运行，并自动上传 `cowtransfer` 以取回
+- 支持 `Github Actions` 每日运行，并自动上传阿里云盘
 - 爬取 Nhentai 并获取首页上的所有本子的链接
 - ~~内置 requests 和 aria2 两种可选的下载方式~~
 - 内置更加简单易用的 aria2 配置文件
@@ -24,7 +24,7 @@
 
 ### Github Actions
 
-fork本项目后对 `readme.md` 进行修改后，即可在每日的指定时间自动运行,可以从 `Upload bz` 中获取 `cowtransfer` 的下载链接
+fork本项目后对 `readme.md` 进行修改后，即可在每日的指定时间自动运行。会自动上传至阿里网盘，所以请在设置内配置阿里网盘的 `REFRESH_TOKEN` ，并将其命名为 `ALIYUNPAN_TOKEN`。
 
 或者可以手动 push 来运行本项目
 
