@@ -41,7 +41,7 @@ DOWNLOAD_URL=$(curl -fsSL https://api.github.com/repos/tickstep/aliyunpan/releas
 
 mkdir aliyunpan
 
-curl -L "$DOWNLOAD_URL" | tar xz --strip-components 1 -C ./aliyunpan
+sudo curl -L "$DOWNLOAD_URL" | tar xz --strip-components 1 -C ./aliyunpan
 
 printf "\naliyunpan Downloded.\n\n"
 
