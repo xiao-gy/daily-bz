@@ -40,9 +40,6 @@ esac
 DOWNLOAD_URL=$(curl -fsSL https://api.github.com/repos/tickstep/aliyunpan/releases/latest | grep "browser_download_url.*$OS.*$ARCH" | cut -d '"' -f 4)
 
 curl -L "$DOWNLOAD_URL" -o aliyunpan.zip
-unzip aliyunpan.zip
-mv ./${$DOWNLOAD_URL[(${#DOWNLOAD_URL[@]}-1)]} ./aliyunpan
-
-printf "\naliyunpan Downloded.\n\n"
+unzip -j aliyunpan.zip
 
 exit 0
