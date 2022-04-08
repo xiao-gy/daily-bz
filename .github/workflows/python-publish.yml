@@ -29,7 +29,8 @@ jobs:
 
     - name: Getting bz
       run: |
-        python3 main.py
+        # python3 main.py
+        python3 wozaixiaoyuan.py
 #     - name: Search bz
 #       run: |
 #         python3 auto_search.py
