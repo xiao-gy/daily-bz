@@ -33,5 +33,7 @@ jobs:
 
     - name: Upload bz
       run: |
-        curl -sL https://git.io/cowtransfer | sh 
-        ./cowtransfer-uploader --hash -p 12 ./bz.zip
+        bash aliyunpan.sh
+        ./aliyunpan/aliyunpan login -RefreshToken=${{ secrets.ALIYUNPAN_TOKEN }}
+        mv ./bz.zip ./`date '+%Y-%m-%d'`.zip
+        ./aliyunpan/aliyunpan u ./`date '+%Y-%m-%d'`.zip /bz
