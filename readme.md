@@ -26,10 +26,22 @@
 
 fork本项目后对 `readme.md` 进行修改后，即可在每日的指定时间自动运行。会自动上传至阿里网盘，所以请在设置内配置阿里网盘的 `REFRESH_TOKEN` ，并将其命名为 `ALIYUNPAN_TOKEN`。
 
-或者可以手动 push 来运行本项目
+<details>
+<summary>设置方法</summary>
+<br>
+
+![image.png](https://s2.loli.net/2022/04/09/Vil9qXL45GWmdr1.png)
+
+![image.png](https://s2.loli.net/2022/04/09/GLFCQ14OHnt2eTx.png)
+
+不知道怎么获取 `REFRESH_TOKEN` ? 前往 [tickstep/aliyunpan](https://github.com/tickstep/aliyunpan#1-%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96RefreshToken) 了解
+
+</details>
+
+你可以手动 push 来运行本项目
 
 注：
-- 本项目运行时间不稳定，从1~5小时不等，请耐心等待
+- 本项目运行时间不稳定，从0~5小时不等，请耐心等待
 - `Github Actions` 下载的文件不一定完整 ~~基本就没完整过~~ ，可在本地运行本项目进行补全
 
 ### Windows
@@ -61,6 +73,9 @@ python3 manager.py
 
 - [ P3TERX/aria2.conf ](https://github.com/P3TERX/aria2.conf) 
 采用了此项目的aria2配置脚本，并根据需要进行了修改
+
+- [ tickstep/aliyunpan ](https://github.com/tickstep/aliyunpan)
+采用了此项目作为Action的上传脚本，感谢开发者
 
 ## 最后的话
 
