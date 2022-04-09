@@ -7,6 +7,7 @@
 [![Getting daily bz](https://github.com/sword-of-silence/daily_bz/actions/workflows/python-publish.yml/badge.svg)](https://github.com/sword-of-silence/daily_bz/actions/workflows/python-publish.yml)
 20210825
 20220408
+20220409
 
 ## 功能和特性
 - 支持 `Github Actions` 每日运行，并自动上传 `cowtransfer` 以取回
