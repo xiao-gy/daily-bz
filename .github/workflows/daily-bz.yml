@@ -30,12 +30,12 @@ jobs:
     - name: Getting bz
       run: |
         python3 main.py
+        mv ./bz.zip ./`date '+%Y-%m-%d'`.zip
 
     - name: Upload bz
       run: |
-        bash aliyunpan.sh
-        ./aliyunpan login -RefreshToken=$ALIYUNPAN_TOKEN
-        mv ./bz.zip ./`date '+%Y-%m-%d'`.zip
-        ./aliyunpan u ./`date '+%Y-%m-%d'`.zip /bz
+        bash ./script/aliyunpan.sh
+        ./aliyunpan/aliyunpan login -RefreshToken=$ALIYUNPAN_TOKEN
+        ./aliyunpan/aliyunpan u ./`date '+%Y-%m-%d'`.zip /bz
       env:
         ALIYUNPAN_TOKEN: ${{ secrets.ALIYUNPAN_TOKEN }}
