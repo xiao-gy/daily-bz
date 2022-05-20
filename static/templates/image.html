@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block title %}image{% endblock %}
+
+{% block content %}    
+    <div id="content">
+        {% if all > number %}
+            <section id="image-container" class="fit-horizontal full-height zoom-100"><a href="/g/{{id}}/{{next}}/"><img
+                    src="/img/{{id}}/{{number}}.jpg" width="1280" height="1807"></a></section>
+        {% else %}
+            <section id="image-container" class="fit-horizontal full-height zoom-100"><a href="/g/{{id}}/"><img
+                    src="/img/{{id}}/{{number}}.jpg" width="1280" height="1807"></a></section>
+        {% endif %}
+        <!-- 还在施工中
+        <section class="reader-bar">
+            <div class="reader-buttons-left"><a class="go-back" href="/g/{{id}}/"><i class="fa fa-reply"></i></a></div>
+            <div class="reader-pagination"><a class="first invisible"><i class="fa fa-chevron-left"></i><i
+                        class="fa fa-chevron-left"></i></a><a class="previous invisible"><i
+                        class="fa fa-chevron-left"></i></a><button class="page-number btn btn-unstyled" href=""><span
+                        class="current">1</span><span class="divider">&nbsp;of&nbsp;</span><span
+                        class="num-pages">{{all}}</span></button><a href="/g/{{id}}/{{next}}/" class="next"><i
+                        class="fa fa-chevron-right"></i></a><a href="/g/{{id}}/{{all}}/" class="last"><i
+                        class="fa fa-chevron-right"></i><i class="fa fa-chevron-right"></i></a></div>
+        </section>
+        -->
+    </div>
+
+{% endblock %}

@@ -1,0 +1,49 @@
+<html lang="en" class=" theme-black unauthenticated">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="theme-color" content="#1f1f1f">
+    <meta name="description" content="A web GUI for daily-bz">
+    <title>{% block title %}{% endblock %} - daily-bz</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700">
+    <link rel="stylesheet" href="/styles.3880fca2c456.css">
+    <style type="text/css" abt="234"></style>
+</head>
+
+<body>
+    <nav role="navigation"><a class="logo" href="/"><img src="/static/logo.090da3be7b51.svg"
+                alt="logo" width="46" height="30"></a>
+        <form role="search" action="/search/" class="search"><input required="" type="search" name="q" value=""
+                autocapitalize="none" placeholder="e.g. #110631"><button type="submit"
+                class="btn btn-primary btn-square"><i class="fa fa-search fa-lg"></i></button></form><button
+            type="button" class="btn btn-secondary btn-square" id="hamburger"><span class="line"></span><span
+                class="line"></span><span class="line"></span></button>
+        <div class="collapse">
+            <ul class="menu left">
+                <li class="desktop "><a href="/random/">Random</a></li>
+                <li class="desktop "><a href="/tags/">Tags</a></li>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div id="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <!-- footer -->
+    <p class="copyright text-muted">
+        <br>
+        Copyright xiao-gy @2022
+        <br>
+        Content from <a href="https://nhentai.net">Nhentai</a>
+        <span style="display: inline-block; margin: 0 5px;">
+            <i class="fa fa-heart"></i>
+        </span>
+        </span>
+        Modify by <a href="https://github.com/xiao-gy/daily-bz.git">xiao-gy</a>
+    </p>
+</body>
+
+</html>

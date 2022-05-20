@@ -68,7 +68,6 @@ def get_bzdetail(id):
     f.write(json.dumps(data,ensure_ascii=False))
     return name,tags,page
 
-#finish
 @retry(stop_max_attempt_number=5)
 def get_search(keyword):
     global url_list

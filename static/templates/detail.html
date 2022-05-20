@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+{% block title %}detail{% endblock %}
+
+{% block content %}
+        <div class="container" id="bigcontainer">
+            <div id="cover"><a href="/g/{{info['id']}}/1/"><img class="lazyload" width="350" height="494"
+                        data-src="/img/{{info['id']}}/1.jpg"
+                        src="/img/{{info['id']}}/1.jpg"></a></div>
+            <div id="info-block">
+                <div id="info">
+                    <h1 class="title"><span>{{info['name']}}</span></h1>
+                    <h3 id="gallery_id"><span class="hash">#</span>{{info['id']}}</h3>
+                    <section id="tags">
+                        <div class="tag-container field-name ">
+                            Tags:
+                            {% for k in info['tags'] %}
+                                <span class="tags"><a href="/tags/{{k}}" class="tag"><span
+                                    class="name">{{k}}</span></a></span>
+                            {% endfor %}
+                        </div>
+                    </section>
+                    <div class="buttons"><a class="btn btn-primary btn-disabled tooltip"><i
+                                class="fas fa-heart"></i><span>Favorite <span class="nobold">(18403)</span></span>
+                        </a><a id="download" class="btn btn-secondary btn-disabled tooltip"><i
+                                class="fa fa-download"></i> Download<div class="top">You need to log in to
+                                download<i></i></div></a></div>
+                </div>
+            </div>
+        </div>
+        <!-- 还在施工中
+        <div class="container clip-height" id="thumbnail-container">
+            <div class="thumbs" style="max-height: 3330px;">
+                <div class="thumb-container"><a class="gallerythumb" href="/g/403471/1/" rel="nofollow"><img
+                            class="lazyload" width="200" height="282"
+                            data-src="https://t3.nhentai.net/galleries/2223506/1t.jpg"
+                            src="data:image/gif;base64,R0lGODlhyAAaAYABAP8AAAD/ACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="><noscript><img
+                                src="https://t3.nhentai.net/galleries/2223506/1t.jpg" width="200"
+                                height="282" /></noscript></a></div>
+            </div>
+            <div id="show-all-images-container"><button id="show-more-images-button" class="btn btn-primary"><i
+                        class="fa fa-eye"></i> &nbsp; <span class="text">Show more</span></button><button
+                    id="show-all-images-button" class="btn btn-secondary"><i class="fa fa-eye"></i> &nbsp; <span
+                        class="text">Show all</span></button></div>
+        </div>
+        <div class="container" id="related-container">
+            <h2>More Like This</h2>
+            <div class="gallery"
+                data-tags="683 832 2937 3391 6346 6817 7155 8010 8050 8739 9162 10300 19954 24201 25601 26130 29366 30126 31044 31775 33172 82436 90671 97795 126706">
+                <a href="/g/381791/" class="cover" style="padding:0 0 141.2% 0"><img class="lazyload" width="250"
+                        height="353" data-src="https://t7.nhentai.net/galleries/2071242/thumb.jpg"
+                        src="data:image/gif;base64,R0lGODlh+gBhAYABAP8AAAD/ACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="><noscript><img
+                            src="https://t7.nhentai.net/galleries/2071242/thumb.jpg" width="250"
+                            height="353" /></noscript>
+                    <div class="caption">[Sonotaozey (Yukataro)] Nakayoshi Onna Boukensha wa Yoru ni Naru to Yadoya de
+                        Mechakucha Ecchi Suru [Digital]</div>
+                </a></div>
+        </div>
+        -->
+{% endblock %}

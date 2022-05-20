@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block title %}home{% endblock %}
+
+{% block content %}
+<!-- 还在施工中
+        <div class="container index-container index-popular">
+            <h2><i class="fa fa-fire color-icon"></i> Popular Now</h2>
+            <div class="gallery" data-tags="1067 2937 9568 12227 13720 17249 22942 24726 28031 29565 33173 35762 35763">
+                <a href="/g/397639/" class="cover" style="padding:0 0 146.8% 0"><img class="lazyload" width="250"
+                        height="367" data-src="/img/397639/1.jpg"
+                        src="/img/397639/1.jpg"><noscript><img
+                            src="/img/397639/1.jpg" width="250"
+                            height="367" /></noscript>
+                    <div class="caption">[Ashiomi Masato] Crime Girls Saishuuwa Kouhen [English] [CGrascal]</div>
+                </a></div>
+        </div>
+        -->
+<div class="container index-container">
+    <h2><i class="fa fa-box-tissue color-icon"></i> New Uploads</h2>
+    {% for k in recommend %}
+    <div class="gallery"><a href="/g/{{k['id']}}/" class="cover" style="padding:0 0 140.79999999999998% 0"><img
+                class="lazyload" width="250" height="352" data-src="/img/{{k['id']}}/1.jpg"
+                src="/img/{{k['id']}}/1.jpg"><noscript><img
+                    src="/img/{{k['id']}}/1.jpg" width="250" height="352" /></noscript>
+            <div class="caption">{{k['name']}}</div>
+        </a></div>
+    {% endfor %}
+    
+    <!-- 还在施工中
+        <section class="pagination"><a href="/?page=1" class="page current">1</a><a href="/?page=2" class="page">2</a><a
+                href="/?page=3" class="page">3</a><a href="/?page=4" class="page">4</a><a href="/?page=5"
+                class="page">5</a><a href="/?page=6" class="page">6</a><a href="/?page=2" class="next"><i
+                    class="fa fa-chevron-right"></i></a><a href="/?page=15703" class="last"><i
+                    class="fa fa-chevron-right"></i><i class="fa fa-chevron-right"></i></a>
+            <div class="ios-mobile-webkit-bottom-spacing">
+                &nbsp;
+                &nbsp;
+            </div>
+        </section>
+        -->
+    {% endblock %}
