@@ -45,7 +45,11 @@ def get_bzinfo(id):
 
 @app.route("/")
 def homepage():
-    return render_template('home.html',recommend=random_bz(20))
+    return render_template('home.html',recommend=all_bz[-1:-20:-1])
+
+@app.route("/random/")
+def randompage():
+    return render_template('random.html',recommend=random_bz(20))
 
 @app.route("/g/<id>/")
 def datail(id):

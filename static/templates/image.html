@@ -4,7 +4,7 @@
 {% block content %}    
     <div id="content">
         {% if all > number %}
-            <section id="image-container" class="fit-horizontal full-height zoom-100"><a href="/g/{{id}}/{{next}}/"><img
+            <section id="image-container" class="fit-horizontal full-height zoom-100"><a href="/g/{{id}}/{{next}}/"><img class="image-container"
                     src="/img/{{id}}/{{number}}.jpg" width="1280" height="1807"></a></section>
         {% else %}
             <section id="image-container" class="fit-horizontal full-height zoom-100"><a href="/g/{{id}}/"><img
@@ -24,5 +24,5 @@
         -->
     </div>
 
-    <style type="text/css">image-container{height: auto; width: auto\9; width:100%;}</style>
+    <style type="text/css">.image-container{height: auto; width: auto\9; width:100%;}</style>
 {% endblock %}
