@@ -3,7 +3,7 @@ import json
 
 #输入程序基本信息
 version = 'v2.0 for nhentai with Web Gui'
-url_base = 'https://nhentai.net'
+url_base = 'https://nyahentai.red'
 headers = {
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36'
     }

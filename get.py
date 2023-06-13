@@ -27,7 +27,7 @@ def get_imglink(id):
     #r = requests.get(url_base+url_add,headers=headers,proxies=proxies,verify=False)
     r = requests.get(url_base+url_add,headers=headers)
     html = etree.HTML(r.text)
-    html_data = html.xpath('//a[@class="gallerythumb"]/img[@class="lazyload"]/@data-src')
+    html_data = html.xpath('//a[@class="gallerythumb"]/img[@class="lazyload "]/@data-src')
     page = len(html_data) #页数
     #r = requests.get(url_base+url_add+'1/',headers=headers,proxies=proxies,verify=False)
     r = requests.get(url_base+url_add+'1/',headers=headers)

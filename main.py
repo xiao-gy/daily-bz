@@ -20,7 +20,7 @@ def main():
 
     url_list = get_bzlist(url_base)
     for i in url_list:
-        id = i[3:-1]
+        id = i.split('/')[-1]
         print(id)
         try:
             os.mkdir(os.path.join(os.getcwd(),'bz',id))
